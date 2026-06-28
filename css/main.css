@@ -93,7 +93,7 @@ body {
     background: linear-gradient(135deg, var(--gold), #A88B1A);
     color: var(--obsidian);
     font-weight: 700;
-    padding: 0.75rem 2rem;
+    padding: 0.6rem 1.5rem;
     border: none;
     border-radius: 100px;
     transition: all 0.3s var(--ease-out-expo);
@@ -118,7 +118,7 @@ header {
 .nav-link {
     position: relative;
     font-weight: 500;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: rgba(245, 240, 232, 0.6);
@@ -188,9 +188,9 @@ header {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 2rem;
+        gap: 1.5rem;
         transform: translateY(-100%);
-        transition: transform 0.5s var(--ease-out-expo), opacity 0.5s var(--ease-out-expo), visibility 0.5s var(--ease-out-expo);
+        transition: transform 0.4s var(--ease-out-expo), opacity 0.4s var(--ease-out-expo), visibility 0.4s var(--ease-out-expo);
         z-index: 40;
         padding: 2rem;
         opacity: 0;
@@ -204,7 +204,8 @@ header {
         pointer-events: auto;
     }
     .nav-link {
-        font-size: 1.2rem;
+        font-size: 1rem;
+        padding: 0.5rem 0;
     }
 }
 
@@ -226,7 +227,7 @@ header {
 .hero-title {
     font-family: var(--font-serif);
     font-weight: 700;
-    font-size: clamp(3.5rem, 14vw, 8rem);
+    font-size: clamp(2.8rem, 12vw, 8rem);
     line-height: 1.02;
     letter-spacing: -0.02em;
     background: linear-gradient(135deg, var(--cream) 20%, var(--gold) 80%);
@@ -236,9 +237,9 @@ header {
     text-shadow: 0 0 80px rgba(201, 162, 39, 0.15);
 }
 .hero-sub {
-    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-size: clamp(0.9rem, 2vw, 1.4rem);
     font-weight: 300;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.04em;
     color: var(--sand);
     opacity: 0.8;
 }
@@ -249,8 +250,8 @@ header {
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 100px;
-    padding: 0.9rem 1.8rem;
-    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
     color: var(--cream);
     width: 100%;
     max-width: 520px;
@@ -283,18 +284,18 @@ header {
 /* ---------- FOUNDER QUOTE ---------- */
 .founder-quote {
     font-family: var(--font-serif);
-    font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+    font-size: clamp(1.2rem, 2.4vw, 2.2rem);
     font-style: italic;
     line-height: 1.6;
     color: var(--sand);
     border-left: 3px solid var(--gold);
-    padding-left: 2rem;
+    padding-left: 1.5rem;
 }
 
 /* ---------- PRESS LOGOS ---------- */
 .press-logo {
     font-family: var(--font-serif);
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.5rem);
     letter-spacing: 0.1em;
     color: var(--sand);
     opacity: 0.4;
@@ -307,7 +308,6 @@ header {
 /* ---------- STATS ---------- */
 .stat-number {
     font-family: var(--font-serif);
-    font-size: 3rem;
     font-weight: 700;
     color: var(--gold);
 }
@@ -321,11 +321,11 @@ footer {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 100px;
-    padding: 0.7rem 1.2rem;
+    padding: 0.5rem 1rem;
     color: var(--cream);
     width: 100%;
     max-width: 300px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 .footer-input::placeholder {
     color: var(--sand);
@@ -337,7 +337,7 @@ footer {
     box-shadow: 0 0 20px var(--gold-glow);
 }
 
-/* ---------- GLOW ORBS (parallax) ---------- */
+/* ---------- GLOW ORBS ---------- */
 .glow-orb {
     position: absolute;
     border-radius: 50%;
@@ -348,29 +348,71 @@ footer {
 }
 .glow-orb--gold {
     background: var(--gold);
-    width: 400px;
-    height: 400px;
-    top: -120px;
-    right: -120px;
+    width: 300px;
+    height: 300px;
+    top: -80px;
+    right: -80px;
 }
 .glow-orb--coffee {
     background: var(--coffee);
-    width: 300px;
-    height: 300px;
-    bottom: -80px;
-    left: -80px;
+    width: 200px;
+    height: 200px;
+    bottom: -60px;
+    left: -60px;
+}
+
+@media (min-width: 769px) {
+    .glow-orb--gold {
+        width: 400px;
+        height: 400px;
+        top: -120px;
+        right: -120px;
+    }
+    .glow-orb--coffee {
+        width: 300px;
+        height: 300px;
+        bottom: -80px;
+        left: -80px;
+    }
 }
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px) {
-    .stat-number {
-        font-size: 2.4rem;
-    }
     .hero-title {
-        font-size: clamp(2.8rem, 10vw, 4.5rem);
+        font-size: clamp(2.4rem, 10vw, 3.8rem);
+    }
+    .search-input {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+    .btn-gold {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.85rem;
+    }
+    .stat-number {
+        font-size: 2rem;
+    }
+    .founder-quote {
+        font-size: 1.1rem;
+        padding-left: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    .hero-sub {
+        font-size: 0.85rem;
     }
     .press-logo {
-        font-size: 1rem;
+        font-size: 0.8rem;
+    }
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    .glass-strong {
+        padding: 1rem !important;
     }
 }
 
@@ -389,4 +431,4 @@ footer {
         opacity: 1;
         transform: none;
     }
-}
+       }
