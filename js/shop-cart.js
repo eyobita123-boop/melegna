@@ -1,9 +1,8 @@
 // ============================================================
-// SHOP-CART.JS – Product/Recipe Data, Cart Logic, Rendering
+// SHOP-CART.JS – Data, Cart Logic, Render Functions
 // ============================================================
 
 // ---- DATA ----
-
 export const recipes = [
     { id: 1, title: 'Shiro (Chickpea Stew)', category: 'Traditional', image: '🥣', description: 'Creamy, spiced chickpea flour stew – a daily staple.' },
     { id: 2, title: 'Dirkosh Firfir', category: 'Traditional', image: '🍞', description: 'Flaky bread torn and sautéed with berbere and onions.' },
@@ -31,7 +30,6 @@ export const videos = [
 ];
 
 // ---- CART ----
-
 let cart = JSON.parse(localStorage.getItem('melegna_cart')) || [];
 
 function saveCart() {
@@ -45,9 +43,13 @@ function updateCartUI() {
     renderCartModal();
 }
 
-function addToCart(productId) {
+export function addToCart(productId) {
+    console.log('Adding product ID:', productId);
     const product = products.find(p => p.id === productId);
-    if (!product) return;
+    if (!product) {
+        console.error('Product not found:', productId);
+        return;
+    }
     const existing = cart.find(item => item.id === productId);
     if (existing) {
         existing.qty += 1;
@@ -55,6 +57,13 @@ function addToCart(productId) {
         cart.push({ ...product, qty: 1 });
     }
     saveCart();
+    // Visual feedback
+    const btn = document.querySelector(`.add-to-cart[data-id="${productId}"]`);
+    if (btn) {
+        const orig = btn.textContent;
+        btn.textContent = '✓ Added!';
+        setTimeout(() => { btn.textContent = orig; }, 800);
+    }
 }
 
 function renderCartModal() {
@@ -81,7 +90,6 @@ function renderCartModal() {
 }
 
 // ---- RENDER FUNCTIONS ----
-
 export function renderRecipes(containerId, data) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -107,11 +115,6 @@ export function renderProducts(containerId, data) {
             <button class="add-to-cart mt-2" data-id="${p.id}">Add to Cart</button>
         </div>
     `).join('');
-    container.querySelectorAll('.add-to-cart').forEach(btn => {
-        btn.addEventListener('click', () => {
-            addToCart(parseInt(btn.dataset.id));
-        });
-    });
 }
 
 export function renderVideos(containerId, data, openVideoCallback) {
@@ -133,10 +136,9 @@ export function renderVideos(containerId, data, openVideoCallback) {
 
 // ---- INIT CART UI ----
 export function initCart() {
-    updateCartUI();
-    // Cart modal events
-    const cartButton = document.getElementById('cart-button');
+    // Set up modal events
     const cartModal = document.getElementById('cartModal');
+    const cartButton = document.getElementById('cart-button');
     const cartClose = document.getElementById('cartClose');
     const checkoutBtn = document.getElementById('checkoutBtn');
 
@@ -164,6 +166,19 @@ export function initCart() {
         closeCartModal();
     });
 
-    // Expose close for other modules if needed
+    // Initial render
+    updateCartUI();
+
+    // Event delegation for Add to Cart buttons
+    document.addEventListener('click', function(e) {
+        const target = e.target.closest('.add-to-cart');
+        if (target) {
+            const id = parseInt(target.dataset.id);
+            if (!isNaN(id)) {
+                addToCart(id);
+            }
+        }
+    });
+
     return { closeCartModal };
 }
