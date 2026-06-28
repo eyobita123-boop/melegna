@@ -35,6 +35,86 @@ export const testimonials = [
     { name: 'David K.', quote: 'The spice blends are incredible – you can taste the tradition in every dish. Highly recommend.', avatar: '👨🏿‍🍳' },
 ];
 
+// ---- GALLERY DATA ----
+export const galleryImages = [
+    { id: 1, title: 'Traditional Coffee Ceremony', category: 'culture', emoji: '☕', description: 'The heart of Ethiopian hospitality.' },
+    { id: 2, title: 'Berbere Spice Market', category: 'spices', emoji: '🌶️', description: 'Vibrant colors and aromatic blends.' },
+    { id: 3, title: 'Injera Baking', category: 'food', emoji: '🫓', description: 'Perfecting the art of sourdough flatbread.' },
+    { id: 4, title: 'Teff Harvest', category: 'culture', emoji: '🌾', description: 'The ancient grain of Ethiopia.' },
+    { id: 5, title: 'Shiro Preparation', category: 'food', emoji: '🍲', description: 'A comforting chickpea stew tradition.' },
+    { id: 6, title: 'Ethiopian Spice Blends', category: 'spices', emoji: '🟤', description: 'The secret behind every dish.' },
+    { id: 7, title: 'Community Cooking', category: 'people', emoji: '👩🏿‍🍳', description: 'Food brings us together.' },
+    { id: 8, title: 'Kibe (Clarified Butter)', category: 'food', emoji: '🧈', description: 'Infused with herbs and tradition.' },
+    { id: 9, title: 'Spice Grinding Stone', category: 'culture', emoji: '🪨', description: 'Ancient tools, modern flavors.' },
+    { id: 10, title: 'Ethiopian Feast (Doro Wat)', category: 'food', emoji: '🍗', description: 'A celebration of flavors.' },
+    { id: 11, title: 'Market Colors', category: 'spices', emoji: '🎨', description: 'Ethiopia\'s vibrant spice palette.' },
+    { id: 12, title: 'Family Recipe', category: 'people', emoji: '👨🏿‍🍳', description: 'Passing down culinary wisdom.' },
+];
+
+// ---- BLOG DATA ----
+export const blogPosts = [
+    {
+        id: 1,
+        title: 'The Art of Ethiopian Coffee Ceremony',
+        excerpt: 'Discover the ancient ritual that brings communities together over a cup of coffee.',
+        category: 'Culture',
+        date: 'June 25, 2026',
+        readTime: '5 min read',
+        emoji: '☕',
+        author: 'Selam Alemayehu'
+    },
+    {
+        id: 2,
+        title: 'Spice Guide: Berbere Beyond the Basics',
+        excerpt: 'Explore the rich history and complex flavors of Ethiopia\'s most iconic spice blend.',
+        category: 'Spices',
+        date: 'June 22, 2026',
+        readTime: '4 min read',
+        emoji: '🌶️',
+        author: 'Selam Alemayehu'
+    },
+    {
+        id: 3,
+        title: '10 Kitchen Hacks from Ethiopian Grandmothers',
+        excerpt: 'Time-tested wisdom passed down through generations of Ethiopian cooks.',
+        category: 'Kitchen Tips',
+        date: 'June 18, 2026',
+        readTime: '6 min read',
+        emoji: '👵🏿',
+        author: 'Selam Alemayehu'
+    },
+    {
+        id: 4,
+        title: 'Injera: The Soul of Ethiopian Cuisine',
+        excerpt: 'Everything you need to know about Ethiopia\'s beloved sourdough flatbread.',
+        category: 'Food',
+        date: 'June 15, 2026',
+        readTime: '5 min read',
+        emoji: '🫓',
+        author: 'Selam Alemayehu'
+    },
+    {
+        id: 5,
+        title: 'Modern Ethiopian: Fusion Recipes for Today',
+        excerpt: 'How traditional Ethiopian flavors are inspiring contemporary cuisine worldwide.',
+        category: 'Modern',
+        date: 'June 10, 2026',
+        readTime: '4 min read',
+        emoji: '🍝',
+        author: 'Selam Alemayehu'
+    },
+    {
+        id: 6,
+        title: 'The Spice Route: Ethiopian Cuisine in Context',
+        excerpt: 'Understanding the cultural and historical influences on Ethiopian cooking.',
+        category: 'History',
+        date: 'June 5, 2026',
+        readTime: '7 min read',
+        emoji: '📖',
+        author: 'Selam Alemayehu'
+    },
+];
+
 // ---- CART ----
 let cart = JSON.parse(localStorage.getItem('melegna_cart')) || [];
 
@@ -183,6 +263,76 @@ export function renderTestimonials(containerId, data) {
     `).join('');
 }
 
+// ---- GALLERY RENDER ----
+export function renderGallery(containerId, data, filter = 'all') {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const filtered = filter === 'all' ? data : data.filter(item => item.category === filter);
+    container.innerHTML = filtered.map(item => `
+        <div class="gallery-item cursor-pointer" data-id="${item.id}" data-category="${item.category}">
+            <div class="aspect-square bg-coffee/30 rounded-xl flex items-center justify-center text-7xl hover:scale-110 transition-transform duration-300 relative overflow-hidden group">
+                <span class="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                <span class="relative">${item.emoji}</span>
+                <div class="absolute bottom-0 left-0 right-0 p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <p class="text-cream text-xs font-medium">${item.title}</p>
+                </div>
+            </div>
+        </div>
+    `).join('');
+
+    // Click to open lightbox
+    container.querySelectorAll('.gallery-item').forEach(el => {
+        el.addEventListener('click', () => {
+            const id = parseInt(el.dataset.id);
+            const image = data.find(i => i.id === id);
+            if (image && window.openImageLightbox) {
+                window.openImageLightbox(image.emoji, image.title);
+            }
+        });
+    });
+}
+
+// ---- BLOG RENDER ----
+export function renderBlog(containerId, data, searchTerm = '') {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const filtered = searchTerm ? data.filter(post =>
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
+    ) : data;
+
+    container.innerHTML = filtered.map(post => `
+        <div class="blog-card" data-id="${post.id}">
+            <div class="text-5xl mb-3">${post.emoji}</div>
+            <div class="flex items-center gap-2 text-xs text-gold/60 mb-2">
+                <span>${post.category}</span>
+                <span>•</span>
+                <span>${post.date}</span>
+                <span>•</span>
+                <span>${post.readTime}</span>
+            </div>
+            <h3 class="font-serif text-xl text-cream hover:text-gold transition-colors cursor-pointer">${post.title}</h3>
+            <p class="text-cream/40 text-sm mt-2">${post.excerpt}</p>
+            <div class="flex items-center justify-between mt-4 pt-4 border-t border-white/5">
+                <span class="text-cream/30 text-xs">By ${post.author}</span>
+                <button class="text-gold/60 hover:text-gold text-sm font-medium read-more" data-id="${post.id}">Read More →</button>
+            </div>
+        </div>
+    `).join('');
+
+    // Read More click
+    container.querySelectorAll('.read-more').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = parseInt(btn.dataset.id);
+            const post = data.find(p => p.id === id);
+            if (post && window.openBlogPost) {
+                window.openBlogPost(post);
+            }
+        });
+    });
+}
+
 // ---- INIT CART UI ----
 export function initCart() {
     const cartModal = document.getElementById('cartModal');
@@ -220,7 +370,6 @@ export function initCart() {
 
     updateCartUI();
 
-    // Event delegation for Add to Cart buttons
     document.addEventListener('click', function(e) {
         const target = e.target.closest('.add-to-cart');
         if (target) {
