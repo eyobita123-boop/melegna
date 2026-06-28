@@ -1,0 +1,193 @@
+/* ============================================================
+   COMPONENTS.CSS – Glass, Cards, Cart Modal, Video Lightbox, Sliders
+   ============================================================ */
+
+/* ---------- CARDS ---------- */
+.recipe-card,
+.product-card,
+.video-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 1.25rem;
+    padding: 1rem;
+    transition: all 0.4s var(--ease-out-expo);
+    cursor: default;
+}
+.recipe-card:hover,
+.product-card:hover,
+.video-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(251, 191, 36, 0.3);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.add-to-cart {
+    background: linear-gradient(135deg, var(--yellow-light), var(--yellow));
+    color: var(--obsidian);
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    transition: all 0.3s var(--ease-out-expo);
+    cursor: pointer;
+}
+.add-to-cart:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px var(--yellow-glow);
+}
+
+/* ---------- CART BUTTON ---------- */
+#cart-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 100;
+    background: linear-gradient(135deg, var(--yellow-light), var(--yellow));
+    color: var(--obsidian);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    box-shadow: 0 10px 40px rgba(251, 191, 36, 0.4);
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out-expo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+#cart-button:hover {
+    transform: scale(1.1);
+}
+#cart-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: var(--obsidian);
+    color: var(--yellow-light);
+    font-size: 0.7rem;
+    font-weight: 700;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--yellow);
+}
+
+/* ---------- CART MODAL ---------- */
+.cart-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(12, 10, 9, 0.92);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease-out-expo);
+    padding: 2rem;
+}
+.cart-modal.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+.cart-modal-inner {
+    background: var(--obsidian);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 1.5rem;
+    max-width: 500px;
+    width: 100%;
+    padding: 2rem;
+    max-height: 80vh;
+    overflow-y: auto;
+    transform: scale(0.95);
+    transition: transform 0.4s var(--ease-out-expo);
+}
+.cart-modal.is-open .cart-modal-inner {
+    transform: scale(1);
+}
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.cart-total {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: var(--yellow-light);
+}
+
+/* ---------- VIDEO LIGHTBOX ---------- */
+.video-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: rgba(12, 10, 9, 0.95);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease-out-expo);
+    padding: 2rem;
+}
+.video-lightbox.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+.video-lightbox-inner {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    background: var(--obsidian);
+    border-radius: 1rem;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.4s var(--ease-out-expo);
+}
+.video-lightbox.is-open .video-lightbox-inner {
+    transform: scale(1);
+}
+.video-lightbox-inner iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.video-close {
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out-expo);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.video-close:hover {
+    background: var(--yellow);
+    color: var(--obsidian);
+    transform: rotate(90deg);
+  }
