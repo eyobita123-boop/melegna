@@ -2,7 +2,7 @@
 // SHOP-CART.JS – Data, Cart Logic, Render Functions
 // ============================================================
 
-// ---- DATA ----
+// ---- DATA (keep your own if different) ----
 export const recipes = [
     { id: 1, title: 'Shiro (Chickpea Stew)', category: 'Traditional', image: '🥣', description: 'Creamy, spiced chickpea flour stew – a daily staple.' },
     { id: 2, title: 'Dirkosh Firfir', category: 'Traditional', image: '🍞', description: 'Flaky bread torn and sautéed with berbere and onions.' },
@@ -62,7 +62,7 @@ export function addToCart(productId) {
     }
 }
 
-// ---- NEW: Update quantity by delta (+1 or -1) ----
+// ---- UPDATE QUANTITY (by delta) ----
 export function updateQuantity(productId, delta) {
     const item = cart.find(i => i.id === productId);
     if (!item) return;
@@ -75,6 +75,7 @@ export function updateQuantity(productId, delta) {
     saveCart();
 }
 
+// ---- RENDER CART MODAL (with + / - buttons) ----
 function renderCartModal() {
     const container = document.getElementById('cartItems');
     if (!container) return;
@@ -105,9 +106,10 @@ function renderCartModal() {
     container.innerHTML = html;
     document.getElementById('cartTotal').textContent = `Total: $${total.toFixed(2)}`;
 
-    // Attach event listeners to the new +/- buttons
+    // Attach event listeners to the +/- buttons
     container.querySelectorAll('.qty-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
+            e.stopPropagation();
             const id = parseInt(btn.dataset.id);
             const delta = parseInt(btn.dataset.delta);
             if (!isNaN(id) && !isNaN(delta)) {
@@ -117,7 +119,7 @@ function renderCartModal() {
     });
 }
 
-// ---- RENDER FUNCTIONS (unchanged) ----
+// ---- RENDER HELPERS (unchanged) ----
 export function renderRecipes(containerId, data) {
     const container = document.getElementById(containerId);
     if (!container) return;
