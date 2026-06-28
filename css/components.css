@@ -391,3 +391,66 @@
     color: var(--obsidian);
     transform: rotate(90deg);
 }
+/* ---------- MOBILE RESPONSIVE OVERRIDES ---------- */
+@media (max-width: 768px) {
+    .recipe-card,
+    .product-card,
+    .video-card,
+    .testimonial-card,
+    .blog-card {
+        padding: 1rem;
+    }
+    .product-card .origin,
+    .product-card .harvest {
+        font-size: 0.6rem;
+    }
+    .gallery-filter {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.7rem;
+    }
+    .gallery-item .aspect-square {
+        min-height: 120px;
+    }
+    #cart-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+        right: 0.6rem;
+    }
+    #cart-count {
+        width: 20px;
+        height: 20px;
+        font-size: 0.6rem;
+    }
+    .cart-modal-inner {
+        padding: 1rem;
+        max-width: 95%;
+    }
+    .qty-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 0.85rem;
+    }
+    .cart-item {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .recipe-card,
+    .product-card,
+    .video-card,
+    .testimonial-card,
+    .blog-card {
+        padding: 0.75rem;
+        border-radius: 1rem;
+    }
+    .gallery-filter {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.6rem;
+    }
+    .blog-card .text-5xl {
+        font-size: 2.5rem;
+    }
+}
