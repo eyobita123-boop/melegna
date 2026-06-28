@@ -1,8 +1,8 @@
 /* ============================================================
-   COMPONENTS.CSS – Glass, Cards, Cart Modal, Video Lightbox, Sliders
+   COMPONENTS.CSS – Cards, Cart, Video Lightbox, etc.
    ============================================================ */
 
-/* ---------- CARDS ---------- */
+/* CARDS */
 .recipe-card,
 .product-card,
 .video-card {
@@ -40,7 +40,7 @@
     box-shadow: 0 0 30px var(--yellow-glow);
 }
 
-/* ---------- CART BUTTON ---------- */
+/* CART BUTTON */
 #cart-button {
     position: fixed;
     bottom: 2rem;
@@ -81,7 +81,7 @@
     border: 2px solid var(--yellow);
 }
 
-/* ---------- CART MODAL ---------- */
+/* CART MODAL */
 .cart-modal {
     position: fixed;
     inset: 0;
@@ -129,7 +129,7 @@
     color: var(--yellow-light);
 }
 
-/* ---------- VIDEO LIGHTBOX ---------- */
+/* VIDEO LIGHTBOX */
 .video-lightbox {
     position: fixed;
     inset: 0;
@@ -190,4 +190,4 @@
     background: var(--yellow);
     color: var(--obsidian);
     transform: rotate(90deg);
-  }
+}
