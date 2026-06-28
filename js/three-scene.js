@@ -1,13 +1,14 @@
 // ============================================================
-// THREE-SCENE.JS – Hero Particles (Yellow/White Brand Colors)
+// THREE-SCENE.JS – Immersive Coffee/Spice Particles
 // ============================================================
 
 import * as THREE from 'three';
 
 const heroContainer = document.getElementById('hero-canvas');
-if (heroContainer) {
+
+if (heroContainer && window.innerWidth >= 768) {
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xFFF9E6);
+    scene.background = new THREE.Color(0x0C0A09);
 
     const camera = new THREE.PerspectiveCamera(60, heroContainer.clientWidth / heroContainer.clientHeight, 0.1, 100);
     camera.position.set(0, 0, 18);
@@ -18,26 +19,28 @@ if (heroContainer) {
     renderer.outputEncoding = THREE.sRGBEncoding;
     heroContainer.appendChild(renderer.domElement);
 
-    const count = 1200;
+    const count = 1500;
     const positions = new Float32Array(count * 3);
     const speeds = new Float32Array(count);
     const drifts = new Float32Array(count * 2);
+
+    // Premium coffee & spice colors
     const colors = [
-    new THREE.Color(0x9B6BFF), // primary-light
-    new THREE.Color(0x6C2BD9), // primary
-    new THREE.Color(0x3A1A6A), // primary-dark
-    new THREE.Color(0xFFFFFF),
-    new THREE.Color(0xC8A8FF), // light lavender
-];
+        new THREE.Color(0xC9A227), // gold
+        new THREE.Color(0x3A2315), // coffee
+        new THREE.Color(0xD6C1A3), // sand
+        new THREE.Color(0xF5F0E8), // cream
+        new THREE.Color(0x8B6B4A), // lighter coffee
+    ];
     const colorArray = new Float32Array(count * 3);
 
     for (let i = 0; i < count; i++) {
-        const radius = 6 + Math.random() * 6;
+        const radius = 5 + Math.random() * 7;
         const theta = Math.random() * Math.PI * 2;
         positions[i * 3] = Math.cos(theta) * radius * 0.8;
         positions[i * 3 + 1] = (Math.random() - 0.5) * 12;
         positions[i * 3 + 2] = Math.sin(theta) * radius * 0.8 - 2;
-        speeds[i] = 0.002 + Math.random() * 0.006;
+        speeds[i] = 0.001 + Math.random() * 0.004;
         drifts[i * 2] = (Math.random() - 0.5) * 0.002;
         drifts[i * 2 + 1] = (Math.random() - 0.5) * 0.002;
         const col = colors[Math.floor(Math.random() * colors.length)];
@@ -56,14 +59,14 @@ if (heroContainer) {
     const ctx = textureCanvas.getContext('2d');
     const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
     gradient.addColorStop(0, 'rgba(255,255,255,1)');
-    gradient.addColorStop(0.3, 'rgba(255,255,255,0.8)');
+    gradient.addColorStop(0.2, 'rgba(255,255,255,0.8)');
     gradient.addColorStop(1, 'rgba(255,255,255,0)');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, 64, 64);
     const texture = new THREE.CanvasTexture(textureCanvas);
 
     const material = new THREE.PointsMaterial({
-        size: 0.15,
+        size: 0.2,
         map: texture,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
@@ -99,10 +102,10 @@ if (heroContainer) {
         requestAnimationFrame(animate);
         for (let i = 0; i < count; i++) {
             posArray[i * 3 + 1] += speeds[i];
-            posArray[i * 3] += drifts[i * 2] * 0.5 + mouseX * 0.0004;
-            posArray[i * 3 + 2] += drifts[i * 2 + 1] * 0.5 + mouseY * 0.0004;
-            if (posArray[i * 3 + 1] > 7) {
-                posArray[i * 3 + 1] = -7;
+            posArray[i * 3] += drifts[i * 2] * 0.5 + mouseX * 0.0003;
+            posArray[i * 3 + 2] += drifts[i * 2 + 1] * 0.5 + mouseY * 0.0003;
+            if (posArray[i * 3 + 1] > 6) {
+                posArray[i * 3 + 1] = -6;
                 const radius = 5 + Math.random() * 7;
                 const theta = Math.random() * Math.PI * 2;
                 posArray[i * 3] = Math.cos(theta) * radius * 0.8;
@@ -110,16 +113,14 @@ if (heroContainer) {
             }
         }
         posAttr.needsUpdate = true;
-        particles.rotation.y += 0.0003;
-        particles.rotation.x += Math.sin(Date.now() * 0.00005) * 0.0001;
+        particles.rotation.y += 0.0002;
+        particles.rotation.x += Math.sin(Date.now() * 0.00003) * 0.0001;
         renderer.render(scene, camera);
     }
     animate();
     resize();
-}
-
-// Disable 3D on mobile
-if (window.innerWidth < 768) {
+} else {
+    // Mobile fallback: remove canvas
     const canvas = document.getElementById('hero-canvas');
     if (canvas) canvas.innerHTML = '';
 }
