@@ -1,0 +1,32 @@
+/* ============================================================
+   ANIMATIONS.CSS – Keyframes and animation classes
+   ============================================================ */
+
+@keyframes float-down {
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateX(-50%) translateY(8px);
+        opacity: 1;
+    }
+}
+.scroll-indicator {
+    animation: float-down 2.4s var(--ease-out-expo) infinite;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.fade-enter {
+    animation: fadeIn 0.7s var(--ease-out-expo) forwards;
+}
