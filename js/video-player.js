@@ -19,10 +19,12 @@ export function initVideoPlayer() {
         document.body.style.overflow = '';
     }
 
-    closeBtn.addEventListener('click', closeVideo);
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeVideo();
-    });
+    if (closeBtn) closeBtn.addEventListener('click', closeVideo);
+    if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeVideo();
+        });
+    }
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeVideo();
     });
