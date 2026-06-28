@@ -45,8 +45,8 @@
     <div class="cart-modal" id="cartModal">
         <div class="cart-modal-inner">
             <div class="flex justify-between items-center mb-4">
-                <h2 class="font-serif text-2xl text-white">Your Cart</h2>
-                <button id="cartClose" class="text-white/40 hover:text-white text-xl">&times;</button>
+                <h2 class="font-serif text-2xl text-obsidian">Your Cart</h2>
+                <button id="cartClose" class="text-obsidian/40 hover:text-obsidian text-xl">&times;</button>
             </div>
             <div id="cartItems"></div>
             <div class="cart-total" id="cartTotal">Total: $0.00</div>
@@ -54,20 +54,17 @@
         </div>
     </div>
 
-    <!-- FLOATING CART BUTTON -->
+    <!-- FLOATING CART BUTTON (visible on all devices) -->
     <button id="cart-button" aria-label="Open cart">
         🛒
         <span id="cart-count">0</span>
     </button>
 
     <!-- NAVIGATION -->
-    <header class="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4" style="background: rgba(12,10,9,0.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.04);">
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4" style="background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,0,0,0.06);">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <a href="#" data-page="home" class="flex items-center gap-2 no-underline">
-                <svg class="logo-svg" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <text x="0" y="30" font-family="'Playfair Display', serif" font-weight="700" font-size="28" fill="#FBBF24">መለኛ</text>
-                    <text x="85" y="28" font-family="'Inter', sans-serif" font-weight="500" font-size="12" fill="rgba(255,255,255,0.5)" letter-spacing="0.3em">MELEGNA</text>
-                </svg>
+                <img src="assets/images/Melegnalogo.png" alt="Melegna Logo" class="h-10 w-auto" />
             </a>
             <nav class="nav-links flex items-center gap-8 md:gap-10" id="navLinks">
                 <a href="#" class="nav-link active" data-page="home">Home</a>
@@ -91,19 +88,21 @@
 
         <!-- HOME -->
         <section class="page-section is-active" id="page-home">
-            <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden" style="background: radial-gradient(ellipse at 50% 30%, var(--umber) 0%, var(--obsidian) 80%);">
+            <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 50%, #FFE8A0 100%);">
                 <div id="hero-canvas"></div>
                 <div class="glow-orb glow-orb--yellow"></div>
                 <div class="glow-orb glow-orb--gold"></div>
                 <div class="relative z-10 text-center px-4 max-w-5xl mx-auto pt-20 pb-12">
-                    <div class="mb-4 text-xs font-medium tracking-[0.2em] uppercase text-yellow-light/60">መለኛ · Melegna</div>
+                    <!-- Logo in Hero -->
+                    <img src="assets/images/Melegnalogo.png" alt="Melegna Logo" class="h-20 w-auto mx-auto mb-6" />
+                    <div class="mb-4 text-xs font-medium tracking-[0.2em] uppercase text-yellow-dark/80">መለኛ · Melegna</div>
                     <h1 class="hero-title mb-6">Culinary Art,<br />Simplified.</h1>
-                    <p class="hero-sub max-w-2xl mx-auto mb-10">
+                    <p class="hero-sub max-w-2xl mx-auto mb-10 text-obsidian/80">
                         Resourceful recipes, authentic spices, and kitchen wisdom — from Ethiopia to the world.
                     </p>
                     <div class="relative max-w-md mx-auto">
                         <input type="text" class="search-input" placeholder="Search recipes, spices, videos…" aria-label="Search" />
-                        <span class="absolute right-5 top-1/2 -translate-y-1/2 text-white/30 text-sm">⌘K</span>
+                        <span class="absolute right-5 top-1/2 -translate-y-1/2 text-obsidian/30 text-sm">⌘K</span>
                     </div>
                 </div>
                 <div class="scroll-indicator">
@@ -112,21 +111,21 @@
                 </div>
             </section>
 
-            <section class="py-20 px-4 md:px-8" style="background: radial-gradient(ellipse at 50% 0%, var(--umber) 0%, var(--obsidian) 90%);">
+            <section class="py-20 px-4 md:px-8" style="background: linear-gradient(180deg, #FFF9E6 0%, #FFFFFF 100%);">
                 <div class="max-w-7xl mx-auto">
                     <div class="text-center mb-12">
-                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-light/60 mb-3">Featured</span>
-                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">Popular <span class="text-yellow">Recipes</span></h2>
+                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-dark/60 mb-3">Featured</span>
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-obsidian">Popular <span class="text-yellow">Recipes</span></h2>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="featuredRecipes"></div>
                 </div>
             </section>
 
-            <section class="py-20 px-4 md:px-8" style="background: radial-gradient(ellipse at 30% 80%, var(--umber) 0%, var(--obsidian) 90%);">
+            <section class="py-20 px-4 md:px-8" style="background: linear-gradient(0deg, #FFF9E6 0%, #FFFFFF 100%);">
                 <div class="max-w-7xl mx-auto">
                     <div class="text-center mb-12">
-                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-light/60 mb-3">Shop</span>
-                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">Our <span class="text-yellow">Spices</span></h2>
+                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-dark/60 mb-3">Shop</span>
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-obsidian">Our <span class="text-yellow">Spices</span></h2>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="homeShop"></div>
                 </div>
@@ -135,11 +134,11 @@
 
         <!-- RECIPES -->
         <section class="page-section" id="page-recipes">
-            <div class="min-h-screen py-28 px-4 md:px-8" style="background: radial-gradient(ellipse at 50% 20%, var(--umber) 0%, var(--obsidian) 90%);">
+            <div class="min-h-screen py-28 px-4 md:px-8" style="background: linear-gradient(135deg, #FFFFFF 0%, #FFF9E6 100%);">
                 <div class="max-w-7xl mx-auto fade-enter">
                     <div class="text-center mb-12">
-                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-light/60 mb-3">Cookbook</span>
-                        <h2 class="font-serif text-5xl md:text-6xl font-bold text-white">All <span class="text-yellow">Recipes</span></h2>
+                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-dark/60 mb-3">Cookbook</span>
+                        <h2 class="font-serif text-5xl md:text-6xl font-bold text-obsidian">All <span class="text-yellow">Recipes</span></h2>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="allRecipes"></div>
                 </div>
@@ -148,12 +147,12 @@
 
         <!-- SHOP -->
         <section class="page-section" id="page-shop">
-            <div class="min-h-screen py-28 px-4 md:px-8" style="background: radial-gradient(ellipse at 70% 20%, var(--umber) 0%, var(--obsidian) 90%);">
+            <div class="min-h-screen py-28 px-4 md:px-8" style="background: linear-gradient(135deg, #FFF9E6 0%, #FFFFFF 100%);">
                 <div class="max-w-7xl mx-auto fade-enter">
                     <div class="text-center mb-12">
-                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-light/60 mb-3">Store</span>
-                        <h2 class="font-serif text-5xl md:text-6xl font-bold text-white">Ethiopian <span class="text-yellow">Spices</span></h2>
-                        <p class="text-white/40 max-w-xl mx-auto mt-2 text-sm">Authentic, small‑batch, and full of flavor.</p>
+                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-dark/60 mb-3">Store</span>
+                        <h2 class="font-serif text-5xl md:text-6xl font-bold text-obsidian">Ethiopian <span class="text-yellow">Spices</span></h2>
+                        <p class="text-obsidian/40 max-w-xl mx-auto mt-2 text-sm">Authentic, small‑batch, and full of flavor.</p>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="shopGrid"></div>
                 </div>
@@ -162,11 +161,11 @@
 
         <!-- VIDEOS -->
         <section class="page-section" id="page-videos">
-            <div class="min-h-screen py-28 px-4 md:px-8" style="background: radial-gradient(ellipse at 30% 80%, var(--umber) 0%, var(--obsidian) 90%);">
+            <div class="min-h-screen py-28 px-4 md:px-8" style="background: linear-gradient(135deg, #FFFFFF 0%, #FFF9E6 100%);">
                 <div class="max-w-7xl mx-auto fade-enter">
                     <div class="text-center mb-12">
-                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-light/60 mb-3">Watch</span>
-                        <h2 class="font-serif text-5xl md:text-6xl font-bold text-white">Cooking <span class="text-yellow">Videos</span></h2>
+                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-dark/60 mb-3">Watch</span>
+                        <h2 class="font-serif text-5xl md:text-6xl font-bold text-obsidian">Cooking <span class="text-yellow">Videos</span></h2>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="videoGrid"></div>
                 </div>
@@ -175,17 +174,17 @@
 
         <!-- ABOUT -->
         <section class="page-section" id="page-about">
-            <div class="min-h-screen flex items-center justify-center px-4 py-28" style="background: radial-gradient(ellipse at 50% 50%, var(--umber) 0%, var(--obsidian) 90%);">
+            <div class="min-h-screen flex items-center justify-center px-4 py-28" style="background: linear-gradient(135deg, #FFF9E6 0%, #FFFFFF 100%);">
                 <div class="max-w-4xl mx-auto text-center fade-enter">
-                    <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-light/60 mb-4">Our Story</span>
-                    <h2 class="font-serif text-5xl md:text-7xl font-bold text-white mb-6">About <span class="text-yellow">Melegna</span></h2>
-                    <p class="text-white/60 max-w-2xl mx-auto text-base font-light leading-relaxed">
-                        <span class="text-yellow font-medium">መለኛ</span> means <strong>“resourceful”</strong> in Amharic — and that’s exactly what we are.
+                    <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-dark/60 mb-4">Our Story</span>
+                    <h2 class="font-serif text-5xl md:text-7xl font-bold text-obsidian mb-6">About <span class="text-yellow">Melegna</span></h2>
+                    <p class="text-obsidian/60 max-w-2xl mx-auto text-base font-light leading-relaxed">
+                        <span class="text-yellow font-medium">መለኛ</span> means <strong>“resourceful”</strong> in Amharic — and that’s exactly what we are[reference:1].
                         We believe great cooking comes from wisdom passed down through generations, combined with a pinch of creativity.
-                        Our platform shares easy, authentic Ethiopian recipes, kitchen hacks, and sells the finest spices straight from local producers.
-                        Whether you're making <em>Shiro</em> or a modern fusion dish, Melegna is your kitchen companion.
+                        Our platform shares easy, authentic Ethiopian recipes, kitchen hacks, and sells the finest spices straight from local producers[reference:2].
+                        Whether you're making <em>Shiro</em>[reference:3] or a modern fusion dish, Melegna is your kitchen companion.
                     </p>
-                    <div class="mt-10 flex flex-wrap justify-center gap-6 text-white/30 text-sm">
+                    <div class="mt-10 flex flex-wrap justify-center gap-6 text-obsidian/30 text-sm">
                         <span>📺 YouTube</span>
                         <span>📱 TikTok</span>
                         <span>📘 Facebook</span>
@@ -197,26 +196,26 @@
 
         <!-- FOUNDER -->
         <section class="page-section" id="page-founder">
-            <div class="min-h-screen flex items-center justify-center px-4 py-28" style="background: radial-gradient(ellipse at 20% 80%, var(--umber) 0%, var(--obsidian) 90%);">
+            <div class="min-h-screen flex items-center justify-center px-4 py-28" style="background: linear-gradient(135deg, #FFFFFF 0%, #FFF9E6 100%);">
                 <div class="max-w-4xl mx-auto fade-enter">
-                    <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-light/60 mb-4">The Visionary</span>
+                    <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-dark/60 mb-4">The Visionary</span>
                     <div class="flex flex-col md:flex-row gap-10 items-start">
                         <div class="md:w-1/3">
-                            <div class="aspect-square rounded-2xl bg-gradient-to-br from-yellow/10 to-yellow-light/10 border border-white/5 flex items-center justify-center">
+                            <div class="aspect-square rounded-2xl bg-gradient-to-br from-yellow/10 to-yellow-light/10 border border-obsidian/5 flex items-center justify-center">
                                 <span class="text-7xl">👩🏿‍🍳</span>
                             </div>
                         </div>
                         <div class="md:w-2/3">
-                            <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">Selam <span class="text-yellow">Alemayehu</span></h2>
+                            <h2 class="font-serif text-4xl md:text-5xl font-bold text-obsidian mb-4">Selam <span class="text-yellow">Alemayehu</span></h2>
                             <div class="founder-quote mb-6">
                                 “Cooking is memory. Every spice tells a story of the land, the hands that harvested it, and the table it graces.”
                             </div>
-                            <p class="text-white/50 text-sm font-light leading-relaxed">
+                            <p class="text-obsidian/50 text-sm font-light leading-relaxed">
                                 A fifth-generation Ethiopian cook and trained food scientist, Selam founded Melegna to preserve
                                 the soul of Ethiopian cuisine while making it accessible to the world. Her work has been featured
-                                in <span class="text-white/70">Eater</span>, <span class="text-white/70">Bon Appétit</span>, and
-                                <span class="text-white/70">The Guardian</span>. She continues to share her passion through videos,
-                                workshops, and her signature spice blends.
+                                in <span class="text-obsidian/70">Eater</span>, <span class="text-obsidian/70">Bon Appétit</span>, and
+                                <span class="text-obsidian/70">The Guardian</span>. She continues to share her passion through videos,
+                                workshops, and her signature spice blends[reference:4].
                             </p>
                         </div>
                     </div>
@@ -226,34 +225,28 @@
 
         <!-- CONTACT -->
         <section class="page-section" id="page-contact">
-            <div class="min-h-screen flex items-center justify-center px-4 py-28" style="background: radial-gradient(ellipse at 80% 20%, var(--umber) 0%, var(--obsidian) 90%);">
+            <div class="min-h-screen flex items-center justify-center px-4 py-28" style="background: linear-gradient(135deg, #FFF9E6 0%, #FFFFFF 100%);">
                 <div class="max-w-3xl mx-auto w-full fade-enter">
-                    <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-light/60 mb-4">Connect</span>
-                    <h2 class="font-serif text-5xl md:text-6xl font-bold text-white mb-6">Let's <span class="text-yellow">Talk</span></h2>
-                    <p class="text-white/40 text-sm font-light mb-10">Reach out for collaborations, press, or just to share a recipe.</p>
+                    <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-dark/60 mb-4">Connect</span>
+                    <h2 class="font-serif text-5xl md:text-6xl font-bold text-obsidian mb-6">Let's <span class="text-yellow">Talk</span></h2>
+                    <p class="text-obsidian/40 text-sm font-light mb-10">Reach out for collaborations, press, or just to share a recipe.</p>
                     <form class="glass-strong p-8 md:p-10 rounded-2xl space-y-6" id="contactForm">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-xs font-medium tracking-[0.1em] uppercase text-white/30 mb-2">Name</label>
-                                <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:border-yellow focus:ring-1 focus:ring-yellow/30 outline-none transition-all" placeholder="Your name" />
+                                <label class="block text-xs font-medium tracking-[0.1em] uppercase text-obsidian/30 mb-2">Name</label>
+                                <input type="text" class="w-full bg-white/80 border border-obsidian/10 rounded-xl px-4 py-3 text-obsidian placeholder-obsidian/20 focus:border-yellow focus:ring-1 focus:ring-yellow/30 outline-none transition-all" placeholder="Your name" />
                             </div>
                             <div>
-                                <label class="block text-xs font-medium tracking-[0.1em] uppercase text-white/30 mb-2">Email</label>
-                                <input type="email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:border-yellow focus:ring-1 focus:ring-yellow/30 outline-none transition-all" placeholder="hello@melegna.com" />
+                                <label class="block text-xs font-medium tracking-[0.1em] uppercase text-obsidian/30 mb-2">Email</label>
+                                <input type="email" class="w-full bg-white/80 border border-obsidian/10 rounded-xl px-4 py-3 text-obsidian placeholder-obsidian/20 focus:border-yellow focus:ring-1 focus:ring-yellow/30 outline-none transition-all" placeholder="hello@melegna.com" />
                             </div>
                         </div>
                         <div>
-                            <label class="block text-xs font-medium tracking-[0.1em] uppercase text-white/30 mb-2">Message</label>
-                            <textarea rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:border-yellow focus:ring-1 focus:ring-yellow/30 outline-none transition-all resize-none" placeholder="Tell us about your culinary journey…"></textarea>
+                            <label class="block text-xs font-medium tracking-[0.1em] uppercase text-obsidian/30 mb-2">Message</label>
+                            <textarea rows="4" class="w-full bg-white/80 border border-obsidian/10 rounded-xl px-4 py-3 text-obsidian placeholder-obsidian/20 focus:border-yellow focus:ring-1 focus:ring-yellow/30 outline-none transition-all resize-none" placeholder="Tell us about your culinary journey…"></textarea>
                         </div>
                         <button type="submit" class="btn-yellow w-full py-3.5 text-base">Send Message</button>
                     </form>
-                    <div class="flex justify-center gap-8 mt-8 text-white/30 text-sm">
-                        <a href="#" class="hover:text-yellow transition-colors">YouTube</a>
-                        <a href="#" class="hover:text-yellow transition-colors">TikTok</a>
-                        <a href="#" class="hover:text-yellow transition-colors">Facebook</a>
-                        <a href="#" class="hover:text-yellow transition-colors">Instagram</a>
-                    </div>
                 </div>
             </div>
         </section>
@@ -261,15 +254,54 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="py-8 px-4 text-center border-t border-white/5" style="background: var(--obsidian);">
-        <div class="max-w-6xl mx-auto">
-            <span class="text-xs font-light text-white/20 tracking-[0.15em]">
-                © 2026 <span class="text-yellow-light/60">መለኛ</span> · Resourceful Cooking, Every Day.
-            </span>
-            <div class="flex justify-center gap-6 mt-3 text-xs text-white/20">
-                <a href="#" class="hover:text-yellow-light/60 transition-colors">YouTube</a>
-                <a href="#" class="hover:text-yellow-light/60 transition-colors">TikTok</a>
-                <a href="#" class="hover:text-yellow-light/60 transition-colors">Instagram</a>
+    <footer class="py-12 px-4" style="background: linear-gradient(135deg, #FFF9E6 0%, #FFE8A0 100%); border-top: 1px solid rgba(0,0,0,0.06);">
+        <div class="max-w-7xl mx-auto">
+            <!-- Footer Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                <!-- Brand -->
+                <div>
+                    <img src="assets/images/Melegnalogo.png" alt="Melegna Logo" class="h-12 w-auto mb-3" />
+                    <p class="text-obsidian/60 text-sm">Resourceful cooking, every day. <br />መለኛ · Melegna</p>
+                </div>
+                <!-- Explore -->
+                <div>
+                    <h4 class="font-serif text-lg text-obsidian mb-3">Explore</h4>
+                    <ul class="space-y-2 text-obsidian/60 text-sm">
+                        <li><a href="#" class="hover:text-yellow transition-colors" data-page="recipes">Recipes</a></li>
+                        <li><a href="#" class="hover:text-yellow transition-colors" data-page="shop">Shop</a></li>
+                        <li><a href="#" class="hover:text-yellow transition-colors" data-page="videos">Videos</a></li>
+                        <li><a href="#" class="hover:text-yellow transition-colors" data-page="about">About</a></li>
+                    </ul>
+                </div>
+                <!-- Gallery & Blog -->
+                <div>
+                    <h4 class="font-serif text-lg text-obsidian mb-3">Media</h4>
+                    <ul class="space-y-2 text-obsidian/60 text-sm">
+                        <li><a href="#" class="hover:text-yellow transition-colors">Gallery</a></li>
+                        <li><a href="#" class="hover:text-yellow transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-yellow transition-colors">Newsletter</a></li>
+                    </ul>
+                </div>
+                <!-- Connect -->
+                <div>
+                    <h4 class="font-serif text-lg text-obsidian mb-3">Connect</h4>
+                    <ul class="space-y-2 text-obsidian/60 text-sm">
+                        <li><a href="#" class="hover:text-yellow transition-colors">YouTube</a></li>
+                        <li><a href="#" class="hover:text-yellow transition-colors">TikTok</a></li>
+                        <li><a href="#" class="hover:text-yellow transition-colors">Facebook</a></li>
+                        <li><a href="#" class="hover:text-yellow transition-colors">Instagram</a></li>
+                        <li><a href="#" class="hover:text-yellow transition-colors" data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Bottom Bar -->
+            <div class="border-t border-obsidian/10 pt-6 flex flex-col sm:flex-row justify-between items-center text-obsidian/40 text-xs">
+                <span>© 2026 <span class="text-yellow-dark/80">መለኛ</span> · Resourceful Cooking, Every Day.</span>
+                <div class="flex gap-4 mt-2 sm:mt-0">
+                    <a href="#" class="hover:text-yellow transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-yellow transition-colors">Terms</a>
+                    <a href="#" class="hover:text-yellow transition-colors">Newsletter</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -283,4 +315,4 @@
     <script type="module" src="js/main.js"></script>
 
 </body>
-    </html>
+                        </html>
