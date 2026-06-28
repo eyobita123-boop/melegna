@@ -70,7 +70,7 @@ function renderCartModal() {
     const container = document.getElementById('cartItems');
     if (!container) return;
     if (cart.length === 0) {
-        container.innerHTML = '<p class="text-white/40 text-sm">Your cart is empty.</p>';
+        container.innerHTML = '<p class="text-obsidian/40 text-sm">Your cart is empty.</p>';
         document.getElementById('cartTotal').textContent = 'Total: $0.00';
         return;
     }
@@ -96,9 +96,9 @@ export function renderRecipes(containerId, data) {
     container.innerHTML = data.map(r => `
         <div class="recipe-card">
             <div class="text-5xl mb-2">${r.image}</div>
-            <h3 class="font-serif text-xl text-white">${r.title}</h3>
-            <p class="text-xs text-yellow-light/60 uppercase tracking-wider mt-1">${r.category}</p>
-            <p class="text-white/40 text-sm mt-2">${r.description}</p>
+            <h3 class="font-serif text-xl text-obsidian">${r.title}</h3>
+            <p class="text-xs text-yellow-dark/60 uppercase tracking-wider mt-1">${r.category}</p>
+            <p class="text-obsidian/40 text-sm mt-2">${r.description}</p>
         </div>
     `).join('');
 }
@@ -109,9 +109,9 @@ export function renderProducts(containerId, data) {
     container.innerHTML = data.map(p => `
         <div class="product-card text-center">
             <div class="text-4xl">${p.image}</div>
-            <h3 class="font-serif text-lg text-white mt-1">${p.name}</h3>
-            <p class="text-white/40 text-xs">${p.description}</p>
-            <div class="text-yellow font-bold mt-1">$${p.price.toFixed(2)}</div>
+            <h3 class="font-serif text-lg text-obsidian mt-1">${p.name}</h3>
+            <p class="text-obsidian/40 text-xs">${p.description}</p>
+            <div class="text-yellow-dark font-bold mt-1">$${p.price.toFixed(2)}</div>
             <button class="add-to-cart mt-2" data-id="${p.id}">Add to Cart</button>
         </div>
     `).join('');
@@ -122,8 +122,8 @@ export function renderVideos(containerId, data, openVideoCallback) {
     if (!container) return;
     container.innerHTML = data.map(v => `
         <div class="video-card cursor-pointer" data-embed="${v.embed}">
-            <div class="aspect-video bg-umber/50 rounded-lg flex items-center justify-center text-6xl">▶</div>
-            <h3 class="font-serif text-lg text-white mt-2">${v.title}</h3>
+            <div class="aspect-video bg-amber-50 rounded-lg flex items-center justify-center text-6xl">▶</div>
+            <h3 class="font-serif text-lg text-obsidian mt-2">${v.title}</h3>
         </div>
     `).join('');
     container.querySelectorAll('.video-card').forEach(card => {
