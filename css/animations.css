@@ -1,22 +1,24 @@
 /* ============================================================
-   ANIMATIONS.CSS – Keyframes
+   ANIMATIONS.CSS – Keyframes & Animation Classes
    ============================================================ */
 
+/* ---------- SCROLL INDICATOR ---------- */
 @keyframes float-down {
     0%,
     100% {
         transform: translateX(-50%) translateY(0);
-        opacity: 0.4;
+        opacity: 0.3;
     }
     50% {
         transform: translateX(-50%) translateY(8px);
-        opacity: 1;
+        opacity: 0.8;
     }
 }
 .scroll-indicator {
     animation: float-down 2.4s var(--ease-out-expo) infinite;
 }
 
+/* ---------- PAGE FADE-IN ---------- */
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -29,4 +31,15 @@
 }
 .fade-enter {
     animation: fadeIn 0.7s var(--ease-out-expo) forwards;
+}
+
+/* ---------- SCROLL REVEAL ---------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s var(--ease-out-expo);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
