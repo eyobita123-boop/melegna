@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>Melegna (መለኛ) — Premium Ethiopian Culinary Art</title>
 
     <!-- Fonts -->
@@ -49,6 +49,7 @@
         <div class="image-lightbox-inner">
             <button class="image-close" id="imageLightboxClose">✕</button>
             <img id="lightboxImage" src="" alt="Gallery Image" />
+            <p class="image-title" id="lightboxTitle"></p>
         </div>
     </div>
 
@@ -72,16 +73,16 @@
     </button>
 
     <!-- HEADER -->
-    <header class="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-3 md:py-4">
+    <header class="fixed top-0 left-0 right-0 z-50 px-3 md:px-8 py-2 md:py-4">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <a href="#" data-page="home" class="flex items-center gap-2 md:gap-3 no-underline">
-                <img src="assets/images/Melegnalogo.png" alt="Melegna Logo" class="h-8 md:h-10 w-auto" />
-                <div class="flex flex-col leading-tight">
-                    <span class="font-serif text-base md:text-lg text-cream font-bold">መለኛ</span>
-                    <span class="text-[8px] md:text-[10px] font-medium tracking-[0.15em] text-cream/40 uppercase">MELEGNA</span>
+            <a href="#" data-page="home" class="flex items-center gap-1 md:gap-3 no-underline min-w-0">
+                <img src="assets/images/Melegnalogo.png" alt="Melegna Logo" class="h-7 md:h-10 w-auto flex-shrink-0" />
+                <div class="flex flex-col leading-tight min-w-0">
+                    <span class="font-serif text-sm md:text-lg text-cream font-bold truncate">መለኛ</span>
+                    <span class="text-[7px] md:text-[10px] font-medium tracking-[0.15em] text-cream/40 uppercase truncate">MELEGNA</span>
                 </div>
             </a>
-            <nav class="nav-links flex items-center gap-4 md:gap-8" id="navLinks">
+            <nav class="nav-links flex items-center gap-3 md:gap-8" id="navLinks">
                 <a href="#" class="nav-link active" data-page="home">Home</a>
                 <a href="#" class="nav-link" data-page="recipes">Recipes</a>
                 <a href="#" class="nav-link" data-page="shop">Shop</a>
@@ -110,17 +111,17 @@
                 <div class="glow-orb glow-orb--gold"></div>
                 <div class="glow-orb glow-orb--coffee"></div>
                 <div class="relative z-10 text-center px-4 max-w-5xl mx-auto pt-20 pb-12">
-                    <img src="assets/images/Melegnalogo.png" alt="Melegna Logo" class="h-16 md:h-20 w-auto mx-auto mb-6 opacity-80" />
-                    <div class="mb-4 text-xs font-medium tracking-[0.2em] uppercase text-gold/60">መለኛ · Melegna</div>
-                    <h1 class="hero-title mb-6">Culinary Art,<br />Simplified.</h1>
-                    <p class="hero-sub max-w-2xl mx-auto mb-10">
+                    <img src="assets/images/Melegnalogo.png" alt="Melegna Logo" class="h-12 md:h-20 w-auto mx-auto mb-4 md:mb-6 opacity-80" />
+                    <div class="mb-3 md:mb-4 text-xs font-medium tracking-[0.2em] uppercase text-gold/60">መለኛ · Melegna</div>
+                    <h1 class="hero-title mb-4 md:mb-6">Culinary Art,<br />Simplified.</h1>
+                    <p class="hero-sub max-w-2xl mx-auto mb-6 md:mb-10 text-sm md:text-base">
                         Resourceful recipes, authentic spices, and kitchen wisdom — from Ethiopia to the world.
                     </p>
                     <div class="relative max-w-md mx-auto">
                         <input type="text" class="search-input" placeholder="Search recipes, spices, stories…" aria-label="Search" />
                         <span class="absolute right-5 top-1/2 -translate-y-1/2 text-cream/30 text-sm">⌘K</span>
                     </div>
-                    <button class="btn-gold mt-8" data-video-trigger>▶ Watch the story</button>
+                    <button class="btn-gold mt-6 md:mt-8 text-sm md:text-base" data-video-trigger>▶ Watch the story</button>
                 </div>
                 <div class="scroll-indicator">
                     <span>Scroll</span>
@@ -129,70 +130,70 @@
             </section>
 
             <!-- FEATURED RECIPES -->
-            <section class="py-20 px-4 md:px-8 reveal" style="background: var(--obsidian);">
+            <section class="py-12 md:py-20 px-4 md:px-8 reveal" style="background: var(--obsidian);">
                 <div class="max-w-7xl mx-auto">
-                    <div class="text-center mb-12">
-                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-3">Featured</span>
-                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-cream">Popular <span class="text-gold">Recipes</span></h2>
+                    <div class="text-center mb-8 md:mb-12">
+                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-2 md:mb-3">Featured</span>
+                        <h2 class="font-serif text-3xl md:text-5xl font-bold text-cream">Popular <span class="text-gold">Recipes</span></h2>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="featuredRecipes"></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6" id="featuredRecipes"></div>
                 </div>
             </section>
 
             <!-- SHOP HIGHLIGHT -->
-            <section class="py-20 px-4 md:px-8 reveal" style="background: linear-gradient(180deg, var(--obsidian) 0%, #1A0E08 100%);">
+            <section class="py-12 md:py-20 px-4 md:px-8 reveal" style="background: linear-gradient(180deg, var(--obsidian) 0%, #1A0E08 100%);">
                 <div class="max-w-7xl mx-auto">
-                    <div class="text-center mb-12">
-                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-3">Shop</span>
-                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-cream">Our <span class="text-gold">Spices</span></h2>
+                    <div class="text-center mb-8 md:mb-12">
+                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-2 md:mb-3">Shop</span>
+                        <h2 class="font-serif text-3xl md:text-5xl font-bold text-cream">Our <span class="text-gold">Spices</span></h2>
                     </div>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="homeShop"></div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4" id="homeShop"></div>
                 </div>
             </section>
 
             <!-- TESTIMONIALS -->
-            <section class="py-20 px-4 md:px-8 reveal" style="background: var(--obsidian);">
+            <section class="py-12 md:py-20 px-4 md:px-8 reveal" style="background: var(--obsidian);">
                 <div class="max-w-7xl mx-auto">
-                    <div class="text-center mb-12">
-                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-3">Testimonials</span>
-                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-cream">What Our <span class="text-gold">Community</span> Says</h2>
+                    <div class="text-center mb-8 md:mb-12">
+                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-2 md:mb-3">Testimonials</span>
+                        <h2 class="font-serif text-3xl md:text-5xl font-bold text-cream">What Our <span class="text-gold">Community</span> Says</h2>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="testimonials"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6" id="testimonials"></div>
                 </div>
             </section>
 
             <!-- STATS -->
-            <section class="py-16 px-4 md:px-8 reveal" style="background: #1A0E08; border-top: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03);">
-                <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <section class="py-10 md:py-16 px-4 md:px-8 reveal" style="background: #1A0E08; border-top: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03);">
+                <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
                     <div>
-                        <div class="stat-number">200+</div>
-                        <div class="text-sm text-cream/40 uppercase tracking-wider">Recipes</div>
+                        <div class="stat-number text-3xl md:text-5xl">200+</div>
+                        <div class="text-xs md:text-sm text-cream/40 uppercase tracking-wider">Recipes</div>
                     </div>
                     <div>
-                        <div class="stat-number">12K</div>
-                        <div class="text-sm text-cream/40 uppercase tracking-wider">Happy Cooks</div>
+                        <div class="stat-number text-3xl md:text-5xl">12K</div>
+                        <div class="text-xs md:text-sm text-cream/40 uppercase tracking-wider">Happy Cooks</div>
                     </div>
                     <div>
-                        <div class="stat-number">15</div>
-                        <div class="text-sm text-cream/40 uppercase tracking-wider">Spice Blends</div>
+                        <div class="stat-number text-3xl md:text-5xl">15</div>
+                        <div class="text-xs md:text-sm text-cream/40 uppercase tracking-wider">Spice Blends</div>
                     </div>
                     <div>
-                        <div class="stat-number">7</div>
-                        <div class="text-sm text-cream/40 uppercase tracking-wider">Years Heritage</div>
+                        <div class="stat-number text-3xl md:text-5xl">7</div>
+                        <div class="text-xs md:text-sm text-cream/40 uppercase tracking-wider">Years Heritage</div>
                     </div>
                 </div>
             </section>
 
             <!-- PRESS LOGOS -->
-            <section class="py-16 px-4 md:px-8 reveal" style="background: var(--obsidian);">
+            <section class="py-10 md:py-16 px-4 md:px-8 reveal" style="background: var(--obsidian);">
                 <div class="max-w-7xl mx-auto text-center">
-                    <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-6">Featured In</span>
-                    <div class="flex flex-wrap justify-center gap-8 md:gap-12">
-                        <span class="press-logo">EATER</span>
-                        <span class="press-logo">BON APPÉTIT</span>
-                        <span class="press-logo">THE GUARDIAN</span>
-                        <span class="press-logo">FOOD & WINE</span>
-                        <span class="press-logo">SAVEUR</span>
+                    <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-4 md:mb-6">Featured In</span>
+                    <div class="flex flex-wrap justify-center gap-4 md:gap-8 lg:gap-12">
+                        <span class="press-logo text-sm md:text-base">EATER</span>
+                        <span class="press-logo text-sm md:text-base">BON APPÉTIT</span>
+                        <span class="press-logo text-sm md:text-base">THE GUARDIAN</span>
+                        <span class="press-logo text-sm md:text-base">FOOD & WINE</span>
+                        <span class="press-logo text-sm md:text-base">SAVEUR</span>
                     </div>
                 </div>
             </section>
@@ -200,99 +201,95 @@
 
         <!-- RECIPES PAGE -->
         <section class="page-section" id="page-recipes">
-            <div class="min-h-screen py-28 px-4 md:px-8" style="background: var(--obsidian);">
+            <div class="min-h-screen py-20 md:py-28 px-4 md:px-8" style="background: var(--obsidian);">
                 <div class="max-w-7xl mx-auto fade-enter">
-                    <div class="text-center mb-12">
-                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-3">Cookbook</span>
-                        <h2 class="font-serif text-5xl md:text-6xl font-bold text-cream">All <span class="text-gold">Recipes</span></h2>
+                    <div class="text-center mb-8 md:mb-12">
+                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-2 md:mb-3">Cookbook</span>
+                        <h2 class="font-serif text-4xl md:text-6xl font-bold text-cream">All <span class="text-gold">Recipes</span></h2>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="allRecipes"></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6" id="allRecipes"></div>
                 </div>
             </div>
         </section>
 
         <!-- SHOP PAGE -->
         <section class="page-section" id="page-shop">
-            <div class="min-h-screen py-28 px-4 md:px-8" style="background: linear-gradient(180deg, var(--obsidian) 0%, #1A0E08 100%);">
+            <div class="min-h-screen py-20 md:py-28 px-4 md:px-8" style="background: linear-gradient(180deg, var(--obsidian) 0%, #1A0E08 100%);">
                 <div class="max-w-7xl mx-auto fade-enter">
-                    <div class="text-center mb-12">
-                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-3">Store</span>
-                        <h2 class="font-serif text-5xl md:text-6xl font-bold text-cream">Ethiopian <span class="text-gold">Spices</span></h2>
+                    <div class="text-center mb-8 md:mb-12">
+                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-2 md:mb-3">Store</span>
+                        <h2 class="font-serif text-4xl md:text-6xl font-bold text-cream">Ethiopian <span class="text-gold">Spices</span></h2>
                         <p class="text-cream/40 max-w-xl mx-auto mt-2 text-sm">Authentic, small‑batch, and full of flavor.</p>
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="shopGrid"></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6" id="shopGrid"></div>
                 </div>
             </div>
         </section>
 
         <!-- GALLERY PAGE -->
         <section class="page-section" id="page-gallery">
-            <div class="min-h-screen py-28 px-4 md:px-8" style="background: var(--obsidian);">
+            <div class="min-h-screen py-20 md:py-28 px-4 md:px-8" style="background: var(--obsidian);">
                 <div class="max-w-7xl mx-auto fade-enter">
-                    <div class="text-center mb-12">
-                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-3">Visual Stories</span>
-                        <h2 class="font-serif text-5xl md:text-6xl font-bold text-cream">Our <span class="text-gold">Gallery</span></h2>
+                    <div class="text-center mb-8 md:mb-12">
+                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-2 md:mb-3">Visual Stories</span>
+                        <h2 class="font-serif text-4xl md:text-6xl font-bold text-cream">Our <span class="text-gold">Gallery</span></h2>
                         <p class="text-cream/40 max-w-xl mx-auto mt-2 text-sm">A visual journey through Ethiopian culinary heritage.</p>
                     </div>
-                    <!-- Gallery Filter -->
-                    <div class="flex flex-wrap justify-center gap-3 mb-10">
-                        <button class="gallery-filter active" data-filter="all">All</button>
-                        <button class="gallery-filter" data-filter="food">🍲 Food</button>
-                        <button class="gallery-filter" data-filter="spices">🌶️ Spices</button>
-                        <button class="gallery-filter" data-filter="culture">🎭 Culture</button>
-                        <button class="gallery-filter" data-filter="people">👨🏿‍🍳 People</button>
+                    <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-10">
+                        <button class="gallery-filter active text-xs md:text-sm" data-filter="all">All</button>
+                        <button class="gallery-filter text-xs md:text-sm" data-filter="food">🍲 Food</button>
+                        <button class="gallery-filter text-xs md:text-sm" data-filter="spices">🌶️ Spices</button>
+                        <button class="gallery-filter text-xs md:text-sm" data-filter="culture">🎭 Culture</button>
+                        <button class="gallery-filter text-xs md:text-sm" data-filter="people">👨🏿‍🍳 People</button>
                     </div>
-                    <!-- Gallery Grid -->
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="galleryGrid"></div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4" id="galleryGrid"></div>
                 </div>
             </div>
         </section>
 
         <!-- BLOG PAGE -->
         <section class="page-section" id="page-blog">
-            <div class="min-h-screen py-28 px-4 md:px-8" style="background: linear-gradient(180deg, var(--obsidian) 0%, #1A0E08 100%);">
+            <div class="min-h-screen py-20 md:py-28 px-4 md:px-8" style="background: linear-gradient(180deg, var(--obsidian) 0%, #1A0E08 100%);">
                 <div class="max-w-7xl mx-auto fade-enter">
-                    <div class="text-center mb-12">
-                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-3">Stories & Insights</span>
-                        <h2 class="font-serif text-5xl md:text-6xl font-bold text-cream">The <span class="text-gold">Blog</span></h2>
+                    <div class="text-center mb-8 md:mb-12">
+                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-2 md:mb-3">Stories & Insights</span>
+                        <h2 class="font-serif text-4xl md:text-6xl font-bold text-cream">The <span class="text-gold">Blog</span></h2>
                         <p class="text-cream/40 max-w-xl mx-auto mt-2 text-sm">Recipes, culture, and stories from the heart of Ethiopia.</p>
                     </div>
-                    <!-- Blog Search -->
-                    <div class="max-w-md mx-auto mb-10">
+                    <div class="max-w-md mx-auto mb-6 md:mb-10">
                         <input type="text" id="blogSearch" class="search-input" placeholder="Search blog posts…" />
                     </div>
-                    <!-- Blog Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="blogGrid"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6" id="blogGrid"></div>
                 </div>
             </div>
         </section>
 
         <!-- VIDEOS PAGE -->
         <section class="page-section" id="page-videos">
-            <div class="min-h-screen py-28 px-4 md:px-8" style="background: var(--obsidian);">
+            <div class="min-h-screen py-20 md:py-28 px-4 md:px-8" style="background: var(--obsidian);">
                 <div class="max-w-7xl mx-auto fade-enter">
-                    <div class="text-center mb-12">
-                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-3">Watch</span>
-                        <h2 class="font-serif text-5xl md:text-6xl font-bold text-cream">Cooking <span class="text-gold">Videos</span></h2>
+                    <div class="text-center mb-8 md:mb-12">
+                        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-2 md:mb-3">Watch</span>
+                        <h2 class="font-serif text-4xl md:text-6xl font-bold text-cream">Cooking <span class="text-gold">Videos</span></h2>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="videoGrid"></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6" id="videoGrid"></div>
                 </div>
             </div>
         </section>
 
         <!-- ABOUT PAGE -->
         <section class="page-section" id="page-about">
-            <div class="min-h-screen flex items-center justify-center px-4 py-28" style="background: radial-gradient(ellipse at 50% 50%, #1A0E08 0%, var(--obsidian) 90%);">
+            <div class="min-h-screen flex items-center justify-center px-4 py-20 md:py-28" style="background: radial-gradient(ellipse at 50% 50%, #1A0E08 0%, var(--obsidian) 90%);">
                 <div class="max-w-4xl mx-auto text-center fade-enter">
-                    <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-4">Our Story</span>
-                    <h2 class="font-serif text-5xl md:text-7xl font-bold text-cream mb-6">About <span class="text-gold">Melegna</span></h2>
-                    <p class="text-cream/60 max-w-2xl mx-auto text-base font-light leading-relaxed">
+                    <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-3 md:mb-4">Our Story</span>
+                    <h2 class="font-serif text-4xl md:text-7xl font-bold text-cream mb-4 md:mb-6">About <span class="text-gold">Melegna</span></h2>
+                    <p class="text-cream/60 max-w-2xl mx-auto text-sm md:text-base font-light leading-relaxed">
                         <span class="text-gold font-medium">መለኛ</span> means <strong>"resourceful"</strong> in Amharic — and that's exactly what we are.
                         We believe great cooking comes from wisdom passed down through generations, combined with a pinch of creativity.
                         Our platform shares easy, authentic Ethiopian recipes, kitchen hacks, and sells the finest spices straight from local producers.
                         Whether you're making <em>Shiro</em> or a modern fusion dish, Melegna is your kitchen companion.
                     </p>
-                    <div class="mt-10 flex flex-wrap justify-center gap-6 text-cream/30 text-sm">
+                    <div class="mt-8 md:mt-10 flex flex-wrap justify-center gap-4 md:gap-6 text-cream/30 text-xs md:text-sm">
                         <span>📺 YouTube</span>
                         <span>📱 TikTok</span>
                         <span>📘 Facebook</span>
@@ -304,21 +301,21 @@
 
         <!-- FOUNDER PAGE -->
         <section class="page-section" id="page-founder">
-            <div class="min-h-screen flex items-center justify-center px-4 py-28" style="background: radial-gradient(ellipse at 20% 80%, #1A0E08 0%, var(--obsidian) 90%);">
+            <div class="min-h-screen flex items-center justify-center px-4 py-20 md:py-28" style="background: radial-gradient(ellipse at 20% 80%, #1A0E08 0%, var(--obsidian) 90%);">
                 <div class="max-w-4xl mx-auto fade-enter">
-                    <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-4">The Visionary</span>
-                    <div class="flex flex-col md:flex-row gap-10 items-start">
-                        <div class="md:w-1/3">
+                    <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-3 md:mb-4">The Visionary</span>
+                    <div class="flex flex-col md:flex-row gap-6 md:gap-10 items-start">
+                        <div class="md:w-1/3 w-full">
                             <div class="aspect-square rounded-2xl bg-gradient-to-br from-gold/10 to-coffee/20 border border-white/5 flex items-center justify-center overflow-hidden">
-                                <span class="text-8xl opacity-60">👩🏿‍🍳</span>
+                                <span class="text-7xl md:text-8xl opacity-60">👩🏿‍🍳</span>
                             </div>
                         </div>
-                        <div class="md:w-2/3">
-                            <h2 class="font-serif text-4xl md:text-5xl font-bold text-cream mb-4">Selam <span class="text-gold">Alemayehu</span></h2>
-                            <div class="founder-quote mb-6">
+                        <div class="md:w-2/3 w-full">
+                            <h2 class="font-serif text-3xl md:text-5xl font-bold text-cream mb-3 md:mb-4">Selam <span class="text-gold">Alemayehu</span></h2>
+                            <div class="founder-quote mb-4 md:mb-6 text-sm md:text-base">
                                 "Cooking is memory. Every spice tells a story of the land, the hands that harvested it, and the table it graces."
                             </div>
-                            <p class="text-cream/50 text-sm font-light leading-relaxed">
+                            <p class="text-cream/50 text-xs md:text-sm font-light leading-relaxed">
                                 A fifth-generation Ethiopian cook and trained food scientist, Selam founded Melegna to preserve
                                 the soul of Ethiopian cuisine while making it accessible to the world. Her work has been featured
                                 in <span class="text-cream/70">Eater</span>, <span class="text-cream/70">Bon Appétit</span>, and
@@ -333,13 +330,13 @@
 
         <!-- CONTACT PAGE -->
         <section class="page-section" id="page-contact">
-            <div class="min-h-screen flex items-center justify-center px-4 py-28" style="background: radial-gradient(ellipse at 80% 20%, #1A0E08 0%, var(--obsidian) 90%);">
+            <div class="min-h-screen flex items-center justify-center px-4 py-20 md:py-28" style="background: radial-gradient(ellipse at 80% 20%, #1A0E08 0%, var(--obsidian) 90%);">
                 <div class="max-w-3xl mx-auto w-full fade-enter">
-                    <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-4">Connect</span>
-                    <h2 class="font-serif text-5xl md:text-6xl font-bold text-cream mb-6">Let's <span class="text-gold">Talk</span></h2>
-                    <p class="text-cream/40 text-sm font-light mb-10">Reach out for collaborations, press, or just to share a recipe.</p>
-                    <form class="glass-strong p-8 md:p-10 rounded-2xl space-y-6" id="contactForm">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-gold/60 mb-3 md:mb-4">Connect</span>
+                    <h2 class="font-serif text-4xl md:text-6xl font-bold text-cream mb-4 md:mb-6">Let's <span class="text-gold">Talk</span></h2>
+                    <p class="text-cream/40 text-sm font-light mb-6 md:mb-10">Reach out for collaborations, press, or just to share a recipe.</p>
+                    <form class="glass-strong p-6 md:p-10 rounded-2xl space-y-4 md:space-y-6" id="contactForm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             <div>
                                 <label class="block text-xs font-medium tracking-[0.1em] uppercase text-cream/30 mb-2">Name</label>
                                 <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-cream placeholder-cream/20 focus:border-gold focus:ring-1 focus:ring-gold/30 outline-none transition-all" placeholder="Your name" />
@@ -362,21 +359,21 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="py-12 px-4">
+    <footer class="py-10 md:py-12 px-4">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-6 md:mb-8">
                 <!-- Brand -->
                 <div>
-                    <img src="assets/images/Melegnalogo.png" alt="Melegna Logo" class="h-12 w-auto mb-3" />
-                    <p class="text-cream/40 text-sm">Resourceful cooking, every day. <br />መለኛ · Melegna</p>
-                    <div class="mt-4">
+                    <img src="assets/images/Melegnalogo.png" alt="Melegna Logo" class="h-10 md:h-12 w-auto mb-3" />
+                    <p class="text-cream/40 text-xs md:text-sm">Resourceful cooking, every day. <br />መለኛ · Melegna</p>
+                    <div class="mt-3 md:mt-4">
                         <span class="text-cream/40 text-xs">📍 Addis Ababa, Ethiopia</span>
                     </div>
                 </div>
                 <!-- Explore -->
                 <div>
-                    <h4 class="font-serif text-lg text-cream mb-3">Explore</h4>
-                    <ul class="space-y-2 text-cream/40 text-sm">
+                    <h4 class="font-serif text-base md:text-lg text-cream mb-2 md:mb-3">Explore</h4>
+                    <ul class="space-y-1 md:space-y-2 text-cream/40 text-xs md:text-sm">
                         <li><a href="#" class="hover:text-gold transition-colors" data-page="recipes">Recipes</a></li>
                         <li><a href="#" class="hover:text-gold transition-colors" data-page="shop">Shop</a></li>
                         <li><a href="#" class="hover:text-gold transition-colors" data-page="gallery">Gallery</a></li>
@@ -388,8 +385,8 @@
                 </div>
                 <!-- Media -->
                 <div>
-                    <h4 class="font-serif text-lg text-cream mb-3">Media</h4>
-                    <ul class="space-y-2 text-cream/40 text-sm">
+                    <h4 class="font-serif text-base md:text-lg text-cream mb-2 md:mb-3">Media</h4>
+                    <ul class="space-y-1 md:space-y-2 text-cream/40 text-xs md:text-sm">
                         <li><a href="#" class="hover:text-gold transition-colors" data-page="gallery">Gallery</a></li>
                         <li><a href="#" class="hover:text-gold transition-colors" data-page="blog">Blog</a></li>
                         <li><a href="#" class="hover:text-gold transition-colors">Newsletter</a></li>
@@ -397,36 +394,36 @@
                 </div>
                 <!-- Connect & Newsletter -->
                 <div>
-                    <h4 class="font-serif text-lg text-cream mb-3">Connect</h4>
-                    <div class="flex flex-wrap gap-4 mb-4">
-                        <a href="https://www.youtube.com/@melegna" target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-gold transition-colors text-xl" aria-label="YouTube">
+                    <h4 class="font-serif text-base md:text-lg text-cream mb-2 md:mb-3">Connect</h4>
+                    <div class="flex flex-wrap gap-3 md:gap-4 mb-3 md:mb-4">
+                        <a href="https://www.youtube.com/@melegna" target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-gold transition-colors text-lg md:text-xl" aria-label="YouTube">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a href="https://www.instagram.com/melegnaa" target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-gold transition-colors text-xl" aria-label="Instagram">
+                        <a href="https://www.instagram.com/melegnaa" target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-gold transition-colors text-lg md:text-xl" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.tiktok.com/@melegnaa" target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-gold transition-colors text-xl" aria-label="TikTok">
+                        <a href="https://www.tiktok.com/@melegnaa" target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-gold transition-colors text-lg md:text-xl" aria-label="TikTok">
                             <i class="fab fa-tiktok"></i>
                         </a>
-                        <a href="https://www.facebook.com/melegnaa" target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-gold transition-colors text-xl" aria-label="Facebook">
+                        <a href="https://www.facebook.com/melegnaa" target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-gold transition-colors text-lg md:text-xl" aria-label="Facebook">
                             <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="https://t.me/melegnaa" target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-gold transition-colors text-xl" aria-label="Telegram">
+                        <a href="https://t.me/melegnaa" target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-gold transition-colors text-lg md:text-xl" aria-label="Telegram">
                             <i class="fab fa-telegram"></i>
                         </a>
                     </div>
-                    <div class="mt-4">
+                    <div class="mt-3 md:mt-4">
                         <h5 class="text-xs font-medium tracking-[0.1em] uppercase text-cream/30 mb-2">Newsletter</h5>
                         <form class="flex flex-col sm:flex-row gap-2" id="newsletterForm">
-                            <input type="email" class="footer-input" placeholder="Your email" required />
-                            <button type="submit" class="btn-gold px-4 py-2 text-sm">Subscribe</button>
+                            <input type="email" class="footer-input text-xs md:text-sm" placeholder="Your email" required />
+                            <button type="submit" class="btn-gold px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm">Subscribe</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-white/5 pt-6 flex flex-col sm:flex-row justify-between items-center text-cream/30 text-xs">
+            <div class="border-t border-white/5 pt-4 md:pt-6 flex flex-col sm:flex-row justify-between items-center text-cream/30 text-[10px] md:text-xs">
                 <span>© 2026 <span class="text-gold/80">መለኛ</span> · Resourceful Cooking, Every Day.</span>
-                <div class="flex gap-4 mt-2 sm:mt-0">
+                <div class="flex gap-3 md:gap-4 mt-2 sm:mt-0">
                     <a href="#" class="hover:text-gold transition-colors">Privacy</a>
                     <a href="#" class="hover:text-gold transition-colors">Terms</a>
                     <a href="#" class="hover:text-gold transition-colors">Imprint</a>
@@ -444,4 +441,4 @@
     <script type="module" src="js/main.js"></script>
 
 </body>
-                        </html>
+                                </html>
