@@ -23,12 +23,12 @@ if (heroContainer) {
     const speeds = new Float32Array(count);
     const drifts = new Float32Array(count * 2);
     const colors = [
-        new THREE.Color(0xFDE047),
-        new THREE.Color(0xEAB308),
-        new THREE.Color(0xCA8A04),
-        new THREE.Color(0xFFFFFF),
-        new THREE.Color(0xFEF08A),
-    ];
+    new THREE.Color(0x9B6BFF), // primary-light
+    new THREE.Color(0x6C2BD9), // primary
+    new THREE.Color(0x3A1A6A), // primary-dark
+    new THREE.Color(0xFFFFFF),
+    new THREE.Color(0xC8A8FF), // light lavender
+];
     const colorArray = new Float32Array(count * 3);
 
     for (let i = 0; i < count; i++) {
