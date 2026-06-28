@@ -7,12 +7,15 @@ export function initNavigation() {
         home: document.getElementById('page-home'),
         recipes: document.getElementById('page-recipes'),
         shop: document.getElementById('page-shop'),
+        gallery: document.getElementById('page-gallery'),
+        blog: document.getElementById('page-blog'),
         videos: document.getElementById('page-videos'),
         about: document.getElementById('page-about'),
         founder: document.getElementById('page-founder'),
         contact: document.getElementById('page-contact'),
     };
-    const navLinks = document.querySelectorAll('.nav-link');
+
+    const navLinks = document.querySelectorAll('.nav-link[data-page]');
     const mobileToggle = document.getElementById('mobileToggle');
     const navLinksContainer = document.getElementById('navLinks');
 
@@ -32,7 +35,6 @@ export function initNavigation() {
             target.querySelectorAll('.reveal').forEach(el => {
                 el.classList.remove('visible');
             });
-            // Let intersection observer re-check
             setTimeout(() => {
                 target.querySelectorAll('.reveal').forEach(el => {
                     const rect = el.getBoundingClientRect();
@@ -53,7 +55,10 @@ export function initNavigation() {
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            navigateTo(link.dataset.page);
+            const page = link.dataset.page;
+            if (page && pages[page]) {
+                navigateTo(page);
+            }
         });
     });
 
@@ -74,7 +79,7 @@ export function initNavigation() {
     }
 
     if (navLinksContainer) {
-        navLinksContainer.querySelectorAll('.nav-link').forEach(link => {
+        navLinksContainer.querySelectorAll('.nav-link[data-page]').forEach(link => {
             link.addEventListener('click', () => {
                 navLinksContainer.classList.remove('is-open');
                 if (mobileToggle) mobileToggle.classList.remove('is-open');
