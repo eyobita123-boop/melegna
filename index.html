@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
 
-    <!-- Tailwind CSS (for layout helpers only) -->
+    <!-- Tailwind (layout helpers) -->
     <script src="https://cdn.tailwindcss.com">
     </script>
 
@@ -30,14 +30,10 @@
 </head>
 <body>
 
-    <!-- ============================================================
-    CUSTOM CURSOR
-    ============================================================ -->
+    <!-- CUSTOM CURSOR -->
     <div id="custom-cursor"></div>
 
-    <!-- ============================================================
-    VIDEO LIGHTBOX
-    ============================================================ -->
+    <!-- VIDEO LIGHTBOX -->
     <div class="video-lightbox" id="videoLightbox">
         <div class="video-lightbox-inner">
             <button class="video-close" id="videoLightboxClose">✕</button>
@@ -45,9 +41,7 @@
         </div>
     </div>
 
-    <!-- ============================================================
-    CART MODAL
-    ============================================================ -->
+    <!-- CART MODAL -->
     <div class="cart-modal" id="cartModal">
         <div class="cart-modal-inner">
             <div class="flex justify-between items-center mb-4">
@@ -60,28 +54,21 @@
         </div>
     </div>
 
-    <!-- ============================================================
-    FLOATING CART BUTTON
-    ============================================================ -->
+    <!-- FLOATING CART BUTTON -->
     <button id="cart-button" aria-label="Open cart">
         🛒
         <span id="cart-count">0</span>
     </button>
 
-    <!-- ============================================================
-    NAVIGATION
-    ============================================================ -->
+    <!-- NAVIGATION -->
     <header class="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4" style="background: rgba(12,10,9,0.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.04);">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-
-            <!-- LOGO -->
             <a href="#" data-page="home" class="flex items-center gap-2 no-underline">
                 <svg class="logo-svg" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <text x="0" y="30" font-family="'Playfair Display', serif" font-weight="700" font-size="28" fill="#FBBF24">መለኛ</text>
                     <text x="85" y="28" font-family="'Inter', sans-serif" font-weight="500" font-size="12" fill="rgba(255,255,255,0.5)" letter-spacing="0.3em">MELEGNA</text>
                 </svg>
             </a>
-
             <nav class="nav-links flex items-center gap-8 md:gap-10" id="navLinks">
                 <a href="#" class="nav-link active" data-page="home">Home</a>
                 <a href="#" class="nav-link" data-page="recipes">Recipes</a>
@@ -91,27 +78,19 @@
                 <a href="#" class="nav-link" data-page="founder">Founder</a>
                 <a href="#" class="nav-link" data-page="contact">Contact</a>
             </nav>
-
             <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-
         </div>
     </header>
 
-    <!-- ============================================================
-    MAIN CONTENT
-    ============================================================ -->
+    <!-- MAIN CONTENT -->
     <main>
 
-        <!-- ==========================================================
-        PAGE: HOME
-        ========================================================== -->
+        <!-- HOME -->
         <section class="page-section is-active" id="page-home">
-
-            <!-- HERO -->
             <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden" style="background: radial-gradient(ellipse at 50% 30%, var(--umber) 0%, var(--obsidian) 80%);">
                 <div id="hero-canvas"></div>
                 <div class="glow-orb glow-orb--yellow"></div>
@@ -133,37 +112,28 @@
                 </div>
             </section>
 
-            <!-- FEATURED RECIPES -->
             <section class="py-20 px-4 md:px-8" style="background: radial-gradient(ellipse at 50% 0%, var(--umber) 0%, var(--obsidian) 90%);">
                 <div class="max-w-7xl mx-auto">
                     <div class="text-center mb-12">
                         <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-light/60 mb-3">Featured</span>
                         <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">Popular <span class="text-yellow">Recipes</span></h2>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="featuredRecipes">
-                        <!-- Injected by JS -->
-                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="featuredRecipes"></div>
                 </div>
             </section>
 
-            <!-- SHOP HIGHLIGHT -->
             <section class="py-20 px-4 md:px-8" style="background: radial-gradient(ellipse at 30% 80%, var(--umber) 0%, var(--obsidian) 90%);">
                 <div class="max-w-7xl mx-auto">
                     <div class="text-center mb-12">
                         <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-light/60 mb-3">Shop</span>
                         <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">Our <span class="text-yellow">Spices</span></h2>
                     </div>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="homeShop">
-                        <!-- Injected by JS -->
-                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="homeShop"></div>
                 </div>
             </section>
-
         </section>
 
-        <!-- ==========================================================
-        PAGE: RECIPES
-        ========================================================== -->
+        <!-- RECIPES -->
         <section class="page-section" id="page-recipes">
             <div class="min-h-screen py-28 px-4 md:px-8" style="background: radial-gradient(ellipse at 50% 20%, var(--umber) 0%, var(--obsidian) 90%);">
                 <div class="max-w-7xl mx-auto fade-enter">
@@ -171,16 +141,12 @@
                         <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-light/60 mb-3">Cookbook</span>
                         <h2 class="font-serif text-5xl md:text-6xl font-bold text-white">All <span class="text-yellow">Recipes</span></h2>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="allRecipes">
-                        <!-- Injected by JS -->
-                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="allRecipes"></div>
                 </div>
             </div>
         </section>
 
-        <!-- ==========================================================
-        PAGE: SHOP
-        ========================================================== -->
+        <!-- SHOP -->
         <section class="page-section" id="page-shop">
             <div class="min-h-screen py-28 px-4 md:px-8" style="background: radial-gradient(ellipse at 70% 20%, var(--umber) 0%, var(--obsidian) 90%);">
                 <div class="max-w-7xl mx-auto fade-enter">
@@ -189,16 +155,12 @@
                         <h2 class="font-serif text-5xl md:text-6xl font-bold text-white">Ethiopian <span class="text-yellow">Spices</span></h2>
                         <p class="text-white/40 max-w-xl mx-auto mt-2 text-sm">Authentic, small‑batch, and full of flavor.</p>
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="shopGrid">
-                        <!-- Injected by JS -->
-                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="shopGrid"></div>
                 </div>
             </div>
         </section>
 
-        <!-- ==========================================================
-        PAGE: VIDEOS
-        ========================================================== -->
+        <!-- VIDEOS -->
         <section class="page-section" id="page-videos">
             <div class="min-h-screen py-28 px-4 md:px-8" style="background: radial-gradient(ellipse at 30% 80%, var(--umber) 0%, var(--obsidian) 90%);">
                 <div class="max-w-7xl mx-auto fade-enter">
@@ -206,16 +168,12 @@
                         <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-light/60 mb-3">Watch</span>
                         <h2 class="font-serif text-5xl md:text-6xl font-bold text-white">Cooking <span class="text-yellow">Videos</span></h2>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="videoGrid">
-                        <!-- Injected by JS -->
-                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="videoGrid"></div>
                 </div>
             </div>
         </section>
 
-        <!-- ==========================================================
-        PAGE: ABOUT
-        ========================================================== -->
+        <!-- ABOUT -->
         <section class="page-section" id="page-about">
             <div class="min-h-screen flex items-center justify-center px-4 py-28" style="background: radial-gradient(ellipse at 50% 50%, var(--umber) 0%, var(--obsidian) 90%);">
                 <div class="max-w-4xl mx-auto text-center fade-enter">
@@ -237,9 +195,7 @@
             </div>
         </section>
 
-        <!-- ==========================================================
-        PAGE: FOUNDER
-        ========================================================== -->
+        <!-- FOUNDER -->
         <section class="page-section" id="page-founder">
             <div class="min-h-screen flex items-center justify-center px-4 py-28" style="background: radial-gradient(ellipse at 20% 80%, var(--umber) 0%, var(--obsidian) 90%);">
                 <div class="max-w-4xl mx-auto fade-enter">
@@ -268,9 +224,7 @@
             </div>
         </section>
 
-        <!-- ==========================================================
-        PAGE: CONTACT
-        ========================================================== -->
+        <!-- CONTACT -->
         <section class="page-section" id="page-contact">
             <div class="min-h-screen flex items-center justify-center px-4 py-28" style="background: radial-gradient(ellipse at 80% 20%, var(--umber) 0%, var(--obsidian) 90%);">
                 <div class="max-w-3xl mx-auto w-full fade-enter">
@@ -306,9 +260,7 @@
 
     </main>
 
-    <!-- ============================================================
-    FOOTER
-    ============================================================ -->
+    <!-- FOOTER -->
     <footer class="py-8 px-4 text-center border-t border-white/5" style="background: var(--obsidian);">
         <div class="max-w-6xl mx-auto">
             <span class="text-xs font-light text-white/20 tracking-[0.15em]">
@@ -322,9 +274,7 @@
         </div>
     </footer>
 
-    <!-- ============================================================
-    JAVASCRIPT MODULES (ES Modules)
-    ============================================================ -->
+    <!-- JavaScript Modules -->
     <script type="module" src="js/three-scene.js"></script>
     <script type="module" src="js/cursor.js"></script>
     <script type="module" src="js/shop-cart.js"></script>
@@ -333,4 +283,4 @@
     <script type="module" src="js/main.js"></script>
 
 </body>
-              </html>
+    </html>
