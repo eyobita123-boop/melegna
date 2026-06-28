@@ -1,5 +1,5 @@
 // ============================================================
-// THREE-SCENE.JS – Hero Particles with Yellow/White Brand Colors
+// THREE-SCENE.JS – Hero Particles (Yellow/White Brand Colors)
 // ============================================================
 
 import * as THREE from 'three';
@@ -22,7 +22,6 @@ if (heroContainer) {
     const positions = new Float32Array(count * 3);
     const speeds = new Float32Array(count);
     const drifts = new Float32Array(count * 2);
-    // Brand colours: yellow, gold, white
     const colors = [
         new THREE.Color(0xFBBF24),
         new THREE.Color(0xF59E0B),
