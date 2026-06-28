@@ -2,7 +2,7 @@
    COMPONENTS.CSS – Cards, Cart, Video Lightbox, etc.
    ============================================================ */
 
-/* CARDS */
+/* ---------- CARDS ---------- */
 .recipe-card,
 .product-card,
 .video-card {
@@ -40,53 +40,62 @@
     box-shadow: 0 0 30px var(--yellow-glow);
 }
 
-/* CART BUTTON */
+/* ---------- FLOATING CART BUTTON – center-right ---------- */
 #cart-button {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 100;
+    top: 50%;
+    right: 1.2rem;
+    transform: translateY(-50%);
+    z-index: 9999 !important; /* Above header (z-50) and everything else */
     background: linear-gradient(135deg, var(--yellow-light), var(--yellow));
     color: var(--obsidian);
     border: none;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     font-size: 1.8rem;
-    box-shadow: 0 10px 40px rgba(234, 179, 8, 0.3);
+    box-shadow: 0 8px 32px rgba(234, 179, 8, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.1);
     cursor: pointer;
     transition: all 0.3s var(--ease-out-expo);
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
-    position: relative;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 #cart-button:hover {
-    transform: scale(1.1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 12px 48px rgba(234, 179, 8, 0.5);
 }
+#cart-button:active {
+    transform: translateY(-50%) scale(0.92);
+}
+
+/* Cart badge count */
 #cart-count {
     position: absolute;
-    top: -6px;
-    right: -6px;
+    top: -4px;
+    right: -4px;
     background: var(--obsidian);
     color: var(--yellow-light);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 2px solid var(--yellow);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* CART MODAL */
+/* ---------- CART MODAL (highest z-index) ---------- */
 .cart-modal {
     position: fixed;
     inset: 0;
-    z-index: 200;
-    background: rgba(0, 0, 0, 0.4);
+    z-index: 10000; /* Above everything, including cart button */
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
     display: flex;
@@ -116,10 +125,13 @@
 .cart-modal.is-open .cart-modal-inner {
     transform: scale(1);
 }
+
+/* Cart items */
 .cart-item {
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem 0;
+    align-items: center;
+    padding: 0.75rem 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 .cart-total {
@@ -129,7 +141,36 @@
     color: var(--yellow-dark);
 }
 
-/* VIDEO LIGHTBOX */
+/* Quantity buttons (+ / -) inside cart */
+.qty-btn {
+    background: var(--yellow-light);
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--obsidian);
+}
+.qty-btn:hover {
+    background: var(--yellow);
+    transform: scale(1.05);
+}
+.qty-btn:active {
+    transform: scale(0.92);
+}
+.qty-num {
+    min-width: 24px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ---------- VIDEO LIGHTBOX ---------- */
 .video-lightbox {
     position: fixed;
     inset: 0;
@@ -190,4 +231,44 @@
     background: var(--yellow);
     color: var(--obsidian);
     transform: rotate(90deg);
+}
+
+/* ---------- RESPONSIVE CART (mobile) ---------- */
+@media (max-width: 768px) {
+    #cart-button {
+        width: 56px;
+        height: 56px;
+        font-size: 1.5rem;
+        right: 0.8rem;
+    }
+    #cart-count {
+        width: 22px;
+        height: 22px;
+        font-size: 0.65rem;
+    }
+    .cart-modal-inner {
+        padding: 1.25rem;
+        max-width: 95%;
+    }
+    .qty-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 0.85rem;
+    }
+    .cart-item {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}
+
+/* ---------- CART SCROLLBAR (optional polish) ---------- */
+.cart-modal-inner::-webkit-scrollbar {
+    width: 4px;
+}
+.cart-modal-inner::-webkit-scrollbar-track {
+    background: transparent;
+}
+.cart-modal-inner::-webkit-scrollbar-thumb {
+    background: var(--yellow);
+    border-radius: 8px;
 }
