@@ -54,19 +54,29 @@
         </div>
     </div>
 
-    <!-- FLOATING CART BUTTON (visible on all devices) -->
+    <!-- FLOATING CART BUTTON -->
     <button id="cart-button" aria-label="Open cart">
         🛒
         <span id="cart-count">0</span>
     </button>
 
-    <!-- NAVIGATION -->
-    <header class="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4" style="background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,0,0,0.06);">
+    <!-- ============================================================
+    HEADER – with logo + Amharic/English brand name (stacked)
+    ============================================================ -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-3 md:py-4" style="background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,0,0,0.06);">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <a href="#" data-page="home" class="flex items-center gap-2 no-underline">
-                <img src="assets/images/Melegnalogo.png" alt="Melegna Logo" class="h-10 w-auto" />
+
+            <!-- Brand: Logo + Amharic/English stacked -->
+            <a href="#" data-page="home" class="flex items-center gap-2 md:gap-3 no-underline">
+                <img src="assets/images/Melegnalogo.png" alt="Melegna Logo" class="h-8 md:h-10 w-auto" />
+                <div class="flex flex-col leading-tight">
+                    <span class="font-serif text-base md:text-lg text-obsidian font-bold">መለኛ</span>
+                    <span class="text-[8px] md:text-[10px] font-medium tracking-[0.15em] text-obsidian/60 uppercase">MELEGNA</span>
+                </div>
             </a>
-            <nav class="nav-links flex items-center gap-8 md:gap-10" id="navLinks">
+
+            <!-- Navigation -->
+            <nav class="nav-links flex items-center gap-6 md:gap-10" id="navLinks">
                 <a href="#" class="nav-link active" data-page="home">Home</a>
                 <a href="#" class="nav-link" data-page="recipes">Recipes</a>
                 <a href="#" class="nav-link" data-page="shop">Shop</a>
@@ -75,11 +85,14 @@
                 <a href="#" class="nav-link" data-page="founder">Founder</a>
                 <a href="#" class="nav-link" data-page="contact">Contact</a>
             </nav>
+
+            <!-- Mobile Toggle -->
             <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+
         </div>
     </header>
 
@@ -179,10 +192,10 @@
                     <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-yellow-dark/60 mb-4">Our Story</span>
                     <h2 class="font-serif text-5xl md:text-7xl font-bold text-obsidian mb-6">About <span class="text-yellow">Melegna</span></h2>
                     <p class="text-obsidian/60 max-w-2xl mx-auto text-base font-light leading-relaxed">
-                        <span class="text-yellow font-medium">መለኛ</span> means <strong>“resourceful”</strong> in Amharic — and that’s exactly what we are[reference:1].
+                        <span class="text-yellow font-medium">መለኛ</span> means <strong>“resourceful”</strong> in Amharic — and that’s exactly what we are.
                         We believe great cooking comes from wisdom passed down through generations, combined with a pinch of creativity.
-                        Our platform shares easy, authentic Ethiopian recipes, kitchen hacks, and sells the finest spices straight from local producers[reference:2].
-                        Whether you're making <em>Shiro</em>[reference:3] or a modern fusion dish, Melegna is your kitchen companion.
+                        Our platform shares easy, authentic Ethiopian recipes, kitchen hacks, and sells the finest spices straight from local producers.
+                        Whether you're making <em>Shiro</em> or a modern fusion dish, Melegna is your kitchen companion.
                     </p>
                     <div class="mt-10 flex flex-wrap justify-center gap-6 text-obsidian/30 text-sm">
                         <span>📺 YouTube</span>
@@ -215,7 +228,7 @@
                                 the soul of Ethiopian cuisine while making it accessible to the world. Her work has been featured
                                 in <span class="text-obsidian/70">Eater</span>, <span class="text-obsidian/70">Bon Appétit</span>, and
                                 <span class="text-obsidian/70">The Guardian</span>. She continues to share her passion through videos,
-                                workshops, and her signature spice blends[reference:4].
+                                workshops, and her signature spice blends.
                             </p>
                         </div>
                     </div>
@@ -256,14 +269,11 @@
     <!-- FOOTER -->
     <footer class="py-12 px-4" style="background: linear-gradient(135deg, #FFF9E6 0%, #FFE8A0 100%); border-top: 1px solid rgba(0,0,0,0.06);">
         <div class="max-w-7xl mx-auto">
-            <!-- Footer Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-                <!-- Brand -->
                 <div>
                     <img src="assets/images/Melegnalogo.png" alt="Melegna Logo" class="h-12 w-auto mb-3" />
                     <p class="text-obsidian/60 text-sm">Resourceful cooking, every day. <br />መለኛ · Melegna</p>
                 </div>
-                <!-- Explore -->
                 <div>
                     <h4 class="font-serif text-lg text-obsidian mb-3">Explore</h4>
                     <ul class="space-y-2 text-obsidian/60 text-sm">
@@ -273,7 +283,6 @@
                         <li><a href="#" class="hover:text-yellow transition-colors" data-page="about">About</a></li>
                     </ul>
                 </div>
-                <!-- Gallery & Blog -->
                 <div>
                     <h4 class="font-serif text-lg text-obsidian mb-3">Media</h4>
                     <ul class="space-y-2 text-obsidian/60 text-sm">
@@ -282,7 +291,6 @@
                         <li><a href="#" class="hover:text-yellow transition-colors">Newsletter</a></li>
                     </ul>
                 </div>
-                <!-- Connect -->
                 <div>
                     <h4 class="font-serif text-lg text-obsidian mb-3">Connect</h4>
                     <ul class="space-y-2 text-obsidian/60 text-sm">
@@ -294,7 +302,6 @@
                     </ul>
                 </div>
             </div>
-            <!-- Bottom Bar -->
             <div class="border-t border-obsidian/10 pt-6 flex flex-col sm:flex-row justify-between items-center text-obsidian/40 text-xs">
                 <span>© 2026 <span class="text-yellow-dark/80">መለኛ</span> · Resourceful Cooking, Every Day.</span>
                 <div class="flex gap-4 mt-2 sm:mt-0">
@@ -315,4 +322,4 @@
     <script type="module" src="js/main.js"></script>
 
 </body>
-                        </html>
+                    </html>
