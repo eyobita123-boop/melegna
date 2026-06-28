@@ -7,7 +7,7 @@ import * as THREE from 'three';
 const heroContainer = document.getElementById('hero-canvas');
 if (heroContainer) {
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0C0A09);
+    scene.background = new THREE.Color(0xFFF9E6);
 
     const camera = new THREE.PerspectiveCamera(60, heroContainer.clientWidth / heroContainer.clientHeight, 0.1, 100);
     camera.position.set(0, 0, 18);
@@ -18,16 +18,16 @@ if (heroContainer) {
     renderer.outputEncoding = THREE.sRGBEncoding;
     heroContainer.appendChild(renderer.domElement);
 
-    const count = 1800;
+    const count = 1200;
     const positions = new Float32Array(count * 3);
     const speeds = new Float32Array(count);
     const drifts = new Float32Array(count * 2);
     const colors = [
-        new THREE.Color(0xFBBF24),
-        new THREE.Color(0xF59E0B),
-        new THREE.Color(0xD97706),
+        new THREE.Color(0xFDE047),
+        new THREE.Color(0xEAB308),
+        new THREE.Color(0xCA8A04),
         new THREE.Color(0xFFFFFF),
-        new THREE.Color(0xFCD34D),
+        new THREE.Color(0xFEF08A),
     ];
     const colorArray = new Float32Array(count * 3);
 
@@ -63,12 +63,12 @@ if (heroContainer) {
     const texture = new THREE.CanvasTexture(textureCanvas);
 
     const material = new THREE.PointsMaterial({
-        size: 0.18,
+        size: 0.15,
         map: texture,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
         transparent: true,
-        opacity: 0.7,
+        opacity: 0.6,
         vertexColors: true,
         sizeAttenuation: true,
     });
