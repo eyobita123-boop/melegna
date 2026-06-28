@@ -15,12 +15,12 @@ import {
 import { initVideoPlayer } from './video-player.js';
 import { initNavigation } from './navigation.js';
 
-// ---- INITIALISE MODULES ----
+// ---- INIT ----
 initCursor();
 
 const { openVideo } = initVideoPlayer();
-const { closeCartModal } = initCart();
 const { navigateTo } = initNavigation();
+const { closeCartModal } = initCart(); // cart modal is now managed in shop-cart.js
 
 // ---- RENDER CONTENT ----
 renderRecipes('featuredRecipes', recipes.slice(0, 3));
