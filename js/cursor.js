@@ -1,5 +1,5 @@
 // ============================================================
-// CURSOR.JS – Custom Cursor Logic
+// CURSOR.JS – Custom Cursor
 // ============================================================
 
 export function initCursor() {
