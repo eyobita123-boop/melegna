@@ -44,12 +44,8 @@ function updateCartUI() {
 }
 
 export function addToCart(productId) {
-    console.log('Adding product ID:', productId);
     const product = products.find(p => p.id === productId);
-    if (!product) {
-        console.error('Product not found:', productId);
-        return;
-    }
+    if (!product) return;
     const existing = cart.find(item => item.id === productId);
     if (existing) {
         existing.qty += 1;
@@ -66,6 +62,19 @@ export function addToCart(productId) {
     }
 }
 
+// ---- NEW: Update quantity by delta (+1 or -1) ----
+export function updateQuantity(productId, delta) {
+    const item = cart.find(i => i.id === productId);
+    if (!item) return;
+    const newQty = item.qty + delta;
+    if (newQty <= 0) {
+        cart = cart.filter(i => i.id !== productId);
+    } else {
+        item.qty = newQty;
+    }
+    saveCart();
+}
+
 function renderCartModal() {
     const container = document.getElementById('cartItems');
     if (!container) return;
@@ -79,17 +88,36 @@ function renderCartModal() {
     cart.forEach(item => {
         total += item.price * item.qty;
         html += `
-            <div class="cart-item">
-                <span>${item.image} ${item.name} × ${item.qty}</span>
-                <span>$${(item.price * item.qty).toFixed(2)}</span>
+            <div class="cart-item" data-id="${item.id}">
+                <div class="flex items-center gap-2">
+                    <span>${item.image}</span>
+                    <span>${item.name}</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="qty-btn" data-id="${item.id}" data-delta="-1">−</button>
+                    <span class="qty-num">${item.qty}</span>
+                    <button class="qty-btn" data-id="${item.id}" data-delta="1">+</button>
+                    <span class="ml-2">$${(item.price * item.qty).toFixed(2)}</span>
+                </div>
             </div>
         `;
     });
     container.innerHTML = html;
     document.getElementById('cartTotal').textContent = `Total: $${total.toFixed(2)}`;
+
+    // Attach event listeners to the new +/- buttons
+    container.querySelectorAll('.qty-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const id = parseInt(btn.dataset.id);
+            const delta = parseInt(btn.dataset.delta);
+            if (!isNaN(id) && !isNaN(delta)) {
+                updateQuantity(id, delta);
+            }
+        });
+    });
 }
 
-// ---- RENDER FUNCTIONS ----
+// ---- RENDER FUNCTIONS (unchanged) ----
 export function renderRecipes(containerId, data) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -136,7 +164,6 @@ export function renderVideos(containerId, data, openVideoCallback) {
 
 // ---- INIT CART UI ----
 export function initCart() {
-    // Set up modal events
     const cartModal = document.getElementById('cartModal');
     const cartButton = document.getElementById('cart-button');
     const cartClose = document.getElementById('cartClose');
@@ -169,7 +196,7 @@ export function initCart() {
     // Initial render
     updateCartUI();
 
-    // Event delegation for Add to Cart buttons
+    // Global event delegation for Add to Cart buttons
     document.addEventListener('click', function(e) {
         const target = e.target.closest('.add-to-cart');
         if (target) {
