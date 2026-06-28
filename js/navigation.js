@@ -1,5 +1,5 @@
 // ============================================================
-// NAVIGATION.JS – SPA Routing, Page Switching
+// NAVIGATION.JS – SPA Routing & Page Switching
 // ============================================================
 
 export function initNavigation() {
@@ -42,13 +42,11 @@ export function initNavigation() {
         });
     });
 
-    // Brand / home link
     document.querySelector('[data-page="home"]').addEventListener('click', (e) => {
         e.preventDefault();
         navigateTo('home');
     });
 
-    // Mobile toggle
     mobileToggle.addEventListener('click', () => {
         const isOpen = navLinksContainer.classList.toggle('is-open');
         mobileToggle.classList.toggle('is-open');
