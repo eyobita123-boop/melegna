@@ -2,7 +2,7 @@
 // SHOP-CART.JS – Data, Cart Logic, Render Functions
 // ============================================================
 
-// ---- DATA (keep your own if different) ----
+// ---- DATA ----
 export const recipes = [
     { id: 1, title: 'Shiro (Chickpea Stew)', category: 'Traditional', image: '🥣', description: 'Creamy, spiced chickpea flour stew – a daily staple.' },
     { id: 2, title: 'Dirkosh Firfir', category: 'Traditional', image: '🍞', description: 'Flaky bread torn and sautéed with berbere and onions.' },
@@ -13,11 +13,11 @@ export const recipes = [
 ];
 
 export const products = [
-    { id: 101, name: 'Berbere', price: 6.99, image: '🌶️', description: 'Signature spicy blend.' },
-    { id: 102, name: 'Shiro Duket', price: 5.49, image: '🫘', description: 'Roasted chickpea flour.' },
-    { id: 103, name: 'Meklesha Kimem', price: 7.99, image: '🌿', description: 'Aromatic spice mix.' },
-    { id: 104, name: 'Beso', price: 4.99, image: '🟤', description: 'Whole grain teff flour.' },
-    { id: 105, name: 'Aja', price: 6.49, image: '🧂', description: 'Traditional salt blend.' },
+    { id: 101, name: 'Berbere', price: 6.99, image: '🌶️', description: 'Signature spicy blend.', origin: 'Shewa, Ethiopia', harvest: 'Harvest 2025' },
+    { id: 102, name: 'Shiro Duket', price: 5.49, image: '🫘', description: 'Roasted chickpea flour.', origin: 'Gondar, Ethiopia', harvest: 'Harvest 2024' },
+    { id: 103, name: 'Meklesha Kimem', price: 7.99, image: '🌿', description: 'Aromatic spice mix.', origin: 'Harar, Ethiopia', harvest: 'Harvest 2025' },
+    { id: 104, name: 'Beso', price: 4.99, image: '🟤', description: 'Whole grain teff flour.', origin: 'Tigray, Ethiopia', harvest: 'Harvest 2024' },
+    { id: 105, name: 'Aja', price: 6.49, image: '🧂', description: 'Traditional salt blend.', origin: 'Afar, Ethiopia', harvest: 'Harvest 2025' },
 ];
 
 export const videos = [
@@ -27,6 +27,12 @@ export const videos = [
     { id: 204, title: 'Clarifying Kibe', embed: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
     { id: 205, title: 'Fusion Lasagna', embed: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
     { id: 206, title: 'Spice Tour', embed: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+];
+
+export const testimonials = [
+    { name: 'Amanuel T.', quote: 'Melegna brought the taste of my grandmother\'s kitchen to my home. The berbere is unmatched.', avatar: '👨🏿‍🍳' },
+    { name: 'Helen M.', quote: 'I never knew cooking Ethiopian food could be so easy and authentic. Shiro recipe is now a weekly staple.', avatar: '👩🏿‍🍳' },
+    { name: 'David K.', quote: 'The spice blends are incredible – you can taste the tradition in every dish. Highly recommend.', avatar: '👨🏿‍🍳' },
 ];
 
 // ---- CART ----
@@ -39,7 +45,8 @@ function saveCart() {
 
 function updateCartUI() {
     const count = cart.reduce((sum, item) => sum + item.qty, 0);
-    document.getElementById('cart-count').textContent = count;
+    const countEl = document.getElementById('cart-count');
+    if (countEl) countEl.textContent = count;
     renderCartModal();
 }
 
@@ -53,7 +60,6 @@ export function addToCart(productId) {
         cart.push({ ...product, qty: 1 });
     }
     saveCart();
-    // Visual feedback
     const btn = document.querySelector(`.add-to-cart[data-id="${productId}"]`);
     if (btn) {
         const orig = btn.textContent;
@@ -62,7 +68,6 @@ export function addToCart(productId) {
     }
 }
 
-// ---- UPDATE QUANTITY (by delta) ----
 export function updateQuantity(productId, delta) {
     const item = cart.find(i => i.id === productId);
     if (!item) return;
@@ -75,13 +80,13 @@ export function updateQuantity(productId, delta) {
     saveCart();
 }
 
-// ---- RENDER CART MODAL (with + / - buttons) ----
 function renderCartModal() {
     const container = document.getElementById('cartItems');
     if (!container) return;
     if (cart.length === 0) {
-        container.innerHTML = '<p class="text-obsidian/40 text-sm">Your cart is empty.</p>';
-        document.getElementById('cartTotal').textContent = 'Total: $0.00';
+        container.innerHTML = '<p class="text-cream/40 text-sm">Your cart is empty.</p>';
+        const totalEl = document.getElementById('cartTotal');
+        if (totalEl) totalEl.textContent = 'Total: $0.00';
         return;
     }
     let html = '';
@@ -104,9 +109,9 @@ function renderCartModal() {
         `;
     });
     container.innerHTML = html;
-    document.getElementById('cartTotal').textContent = `Total: $${total.toFixed(2)}`;
+    const totalEl = document.getElementById('cartTotal');
+    if (totalEl) totalEl.textContent = `Total: $${total.toFixed(2)}`;
 
-    // Attach event listeners to the +/- buttons
     container.querySelectorAll('.qty-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -119,16 +124,16 @@ function renderCartModal() {
     });
 }
 
-// ---- RENDER HELPERS (unchanged) ----
+// ---- RENDER FUNCTIONS ----
 export function renderRecipes(containerId, data) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.innerHTML = data.map(r => `
         <div class="recipe-card">
             <div class="text-5xl mb-2">${r.image}</div>
-            <h3 class="font-serif text-xl text-obsidian">${r.title}</h3>
-            <p class="text-xs text-yellow-dark/60 uppercase tracking-wider mt-1">${r.category}</p>
-            <p class="text-obsidian/40 text-sm mt-2">${r.description}</p>
+            <h3 class="font-serif text-xl text-cream">${r.title}</h3>
+            <p class="text-xs text-gold/60 uppercase tracking-wider mt-1">${r.category}</p>
+            <p class="text-cream/40 text-sm mt-2">${r.description}</p>
         </div>
     `).join('');
 }
@@ -139,9 +144,11 @@ export function renderProducts(containerId, data) {
     container.innerHTML = data.map(p => `
         <div class="product-card text-center">
             <div class="text-4xl">${p.image}</div>
-            <h3 class="font-serif text-lg text-obsidian mt-1">${p.name}</h3>
-            <p class="text-obsidian/40 text-xs">${p.description}</p>
-            <div class="text-yellow-dark font-bold mt-1">$${p.price.toFixed(2)}</div>
+            <h3 class="font-serif text-lg text-cream mt-1">${p.name}</h3>
+            <p class="text-cream/40 text-xs">${p.description}</p>
+            <div class="origin">${p.origin}</div>
+            <div class="harvest">${p.harvest}</div>
+            <div class="text-gold font-bold mt-1">$${p.price.toFixed(2)}</div>
             <button class="add-to-cart mt-2" data-id="${p.id}">Add to Cart</button>
         </div>
     `).join('');
@@ -152,8 +159,8 @@ export function renderVideos(containerId, data, openVideoCallback) {
     if (!container) return;
     container.innerHTML = data.map(v => `
         <div class="video-card cursor-pointer" data-embed="${v.embed}">
-            <div class="aspect-video bg-amber-50 rounded-lg flex items-center justify-center text-6xl">▶</div>
-            <h3 class="font-serif text-lg text-obsidian mt-2">${v.title}</h3>
+            <div class="aspect-video bg-coffee/50 rounded-lg flex items-center justify-center text-6xl">▶</div>
+            <h3 class="font-serif text-lg text-cream mt-2">${v.title}</h3>
         </div>
     `).join('');
     container.querySelectorAll('.video-card').forEach(card => {
@@ -162,6 +169,18 @@ export function renderVideos(containerId, data, openVideoCallback) {
             if (openVideoCallback) openVideoCallback(embed);
         });
     });
+}
+
+export function renderTestimonials(containerId, data) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = data.map(t => `
+        <div class="testimonial-card text-center">
+            <div class="text-4xl mb-2">${t.avatar}</div>
+            <p class="text-cream/80 text-sm italic">"${t.quote}"</p>
+            <div class="text-gold/60 text-sm mt-3">— ${t.name}</div>
+        </div>
+    `).join('');
 }
 
 // ---- INIT CART UI ----
@@ -181,24 +200,27 @@ export function initCart() {
         document.body.style.overflow = '';
     }
 
-    cartButton.addEventListener('click', openCartModal);
-    cartClose.addEventListener('click', closeCartModal);
-    cartModal.addEventListener('click', (e) => {
-        if (e.target === cartModal) closeCartModal();
-    });
+    if (cartButton) cartButton.addEventListener('click', openCartModal);
+    if (cartClose) cartClose.addEventListener('click', closeCartModal);
+    if (cartModal) {
+        cartModal.addEventListener('click', (e) => {
+            if (e.target === cartModal) closeCartModal();
+        });
+    }
 
-    checkoutBtn.addEventListener('click', () => {
-        if (cart.length === 0) return alert('Your cart is empty.');
-        alert('Thank you for your order! (Demo)');
-        cart = [];
-        saveCart();
-        closeCartModal();
-    });
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) return alert('Your cart is empty.');
+            alert('Thank you for your order! (Demo)');
+            cart = [];
+            saveCart();
+            closeCartModal();
+        });
+    }
 
-    // Initial render
     updateCartUI();
 
-    // Global event delegation for Add to Cart buttons
+    // Event delegation for Add to Cart buttons
     document.addEventListener('click', function(e) {
         const target = e.target.closest('.add-to-cart');
         if (target) {
@@ -210,4 +232,4 @@ export function initCart() {
     });
 
     return { closeCartModal };
-}
+    }
