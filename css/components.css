@@ -19,14 +19,14 @@
 .product-card:hover,
 .video-card:hover {
     background: rgba(255, 255, 255, 0.9);
-    border-color: var(--yellow);
+    border-color: var(--primary);
     transform: translateY(-6px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
 }
 
 .add-to-cart {
-    background: linear-gradient(135deg, var(--yellow-light), var(--yellow));
-    color: var(--obsidian);
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    color: var(--white);
     border: none;
     padding: 0.4rem 1rem;
     border-radius: 100px;
@@ -37,7 +37,7 @@
 }
 .add-to-cart:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 30px var(--yellow-glow);
+    box-shadow: 0 0 30px var(--primary-glow);
 }
 
 /* ---------- FLOATING CART BUTTON – center-right ---------- */
@@ -46,15 +46,15 @@
     top: 50%;
     right: 1.2rem;
     transform: translateY(-50%);
-    z-index: 9999 !important; /* Above header (z-50) and everything else */
-    background: linear-gradient(135deg, var(--yellow-light), var(--yellow));
-    color: var(--obsidian);
+    z-index: 9999 !important;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    color: var(--white);
     border: none;
     border-radius: 50%;
     width: 64px;
     height: 64px;
     font-size: 1.8rem;
-    box-shadow: 0 8px 32px rgba(234, 179, 8, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px var(--primary-glow), 0 0 0 2px rgba(255, 255, 255, 0.1);
     cursor: pointer;
     transition: all 0.3s var(--ease-out-expo);
     display: flex !important;
@@ -65,19 +65,18 @@
 }
 #cart-button:hover {
     transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 12px 48px rgba(234, 179, 8, 0.5);
+    box-shadow: 0 12px 48px var(--primary-glow);
 }
 #cart-button:active {
     transform: translateY(-50%) scale(0.92);
 }
 
-/* Cart badge count */
 #cart-count {
     position: absolute;
     top: -4px;
     right: -4px;
     background: var(--obsidian);
-    color: var(--yellow-light);
+    color: var(--primary-light);
     font-size: 0.75rem;
     font-weight: 700;
     width: 26px;
@@ -86,15 +85,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid var(--yellow);
+    border: 2px solid var(--primary);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* ---------- CART MODAL (highest z-index) ---------- */
+/* ---------- CART MODAL ---------- */
 .cart-modal {
     position: fixed;
     inset: 0;
-    z-index: 10000; /* Above everything, including cart button */
+    z-index: 10000;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
@@ -125,8 +124,6 @@
 .cart-modal.is-open .cart-modal-inner {
     transform: scale(1);
 }
-
-/* Cart items */
 .cart-item {
     display: flex;
     justify-content: space-between;
@@ -138,12 +135,12 @@
     font-weight: 700;
     font-size: 1.2rem;
     margin-top: 1rem;
-    color: var(--yellow-dark);
+    color: var(--primary-dark);
 }
 
-/* Quantity buttons (+ / -) inside cart */
+/* Quantity buttons */
 .qty-btn {
-    background: var(--yellow-light);
+    background: var(--primary-light);
     border: none;
     width: 28px;
     height: 28px;
@@ -155,10 +152,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--obsidian);
+    color: var(--white);
 }
 .qty-btn:hover {
-    background: var(--yellow);
+    background: var(--primary);
     transform: scale(1.05);
 }
 .qty-btn:active {
@@ -228,12 +225,12 @@
     justify-content: center;
 }
 .video-close:hover {
-    background: var(--yellow);
-    color: var(--obsidian);
+    background: var(--primary);
+    color: var(--white);
     transform: rotate(90deg);
 }
 
-/* ---------- RESPONSIVE CART (mobile) ---------- */
+/* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px) {
     #cart-button {
         width: 56px;
@@ -261,7 +258,7 @@
     }
 }
 
-/* ---------- CART SCROLLBAR (optional polish) ---------- */
+/* Cart scrollbar */
 .cart-modal-inner::-webkit-scrollbar {
     width: 4px;
 }
@@ -269,6 +266,6 @@
     background: transparent;
 }
 .cart-modal-inner::-webkit-scrollbar-thumb {
-    background: var(--yellow);
+    background: var(--primary);
     border-radius: 8px;
-}
+   }
