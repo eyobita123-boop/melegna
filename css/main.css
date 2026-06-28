@@ -3,18 +3,17 @@
    ============================================================ */
 
 :root {
-    --obsidian: #0C0A09;
-    --umber: #2C1810;
+    --obsidian: #1A1A1A;
     --white: #FFFFFF;
-    --yellow-light: #FBBF24;
-    --yellow: #F59E0B;
-    --yellow-dark: #D97706;
-    --yellow-glow: rgba(251, 191, 36, 0.3);
+    --yellow-light: #FDE047;
+    --yellow: #EAB308;
+    --yellow-dark: #CA8A04;
+    --yellow-glow: rgba(234, 179, 8, 0.3);
     --font-sans: 'Inter', sans-serif;
     --font-serif: 'Playfair Display', serif;
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-    --glass-bg: rgba(255, 255, 255, 0.04);
-    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(0, 0, 0, 0.06);
 }
 
 * {
@@ -29,8 +28,8 @@ html {
 
 body {
     font-family: var(--font-sans);
-    background: var(--obsidian);
-    color: var(--white);
+    background: var(--white);
+    color: var(--obsidian);
     overflow-x: hidden;
     cursor: none;
 }
@@ -48,14 +47,14 @@ body {
     width: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: var(--obsidian);
+    background: var(--white);
 }
 ::-webkit-scrollbar-thumb {
     background: var(--yellow);
     border-radius: 12px;
 }
 
-/* ---------- UTILITY ---------- */
+/* UTILITY */
 .font-serif {
     font-family: var(--font-serif);
 }
@@ -65,6 +64,12 @@ body {
 .text-yellow-light {
     color: var(--yellow-light);
 }
+.text-yellow-dark {
+    color: var(--yellow-dark);
+}
+.text-obsidian {
+    color: var(--obsidian);
+}
 .glass {
     background: var(--glass-bg);
     backdrop-filter: blur(16px) saturate(1.4);
@@ -73,10 +78,10 @@ body {
     border-radius: 1.25rem;
 }
 .glass-strong {
-    background: rgba(12, 10, 9, 0.6);
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(24px) saturate(1.6);
     -webkit-backdrop-filter: blur(24px) saturate(1.6);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 1.5rem;
 }
 .btn-yellow {
@@ -96,15 +101,16 @@ body {
     box-shadow: 0 0 40px var(--yellow-glow);
 }
 
-/* ---------- NAVIGATION ---------- */
+/* NAVIGATION */
 .nav-link {
     position: relative;
     font-weight: 500;
     font-size: 0.875rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.7);
-    transition: color 0.3s var(--ease-out-expo);
+    color: var(--obsidian);
+    opacity: 0.7;
+    transition: opacity 0.3s var(--ease-out-expo);
     padding: 0.25rem 0;
     text-decoration: none;
 }
@@ -120,7 +126,7 @@ body {
 }
 .nav-link:hover,
 .nav-link.active {
-    color: var(--white);
+    opacity: 1;
 }
 .nav-link.active::after {
     width: 100%;
@@ -140,7 +146,7 @@ body {
     display: block;
     width: 28px;
     height: 2px;
-    background: var(--white);
+    background: var(--obsidian);
     border-radius: 2px;
     transition: all 0.3s var(--ease-out-expo);
     transform-origin: center;
@@ -164,7 +170,7 @@ body {
         position: fixed;
         inset: 0;
         top: 0;
-        background: rgba(12, 10, 9, 0.96);
+        background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(40px);
         -webkit-backdrop-filter: blur(40px);
         flex-direction: column;
@@ -184,14 +190,14 @@ body {
     }
 }
 
-/* ---------- LOGO ---------- */
+/* LOGO */
 .logo-svg {
     width: auto;
     height: 2.5rem;
     display: block;
 }
 
-/* ---------- HERO ---------- */
+/* HERO */
 #hero-canvas {
     position: absolute;
     inset: 0;
@@ -211,34 +217,35 @@ body {
     font-size: clamp(3rem, 12vw, 8rem);
     line-height: 1.05;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--white) 30%, var(--yellow-light) 80%, var(--yellow) 100%);
+    background: linear-gradient(135deg, var(--obsidian) 30%, var(--yellow-dark) 80%, var(--yellow) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 80px rgba(251, 191, 36, 0.2);
 }
 .hero-sub {
     font-size: clamp(1rem, 2vw, 1.4rem);
     font-weight: 300;
     letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--obsidian);
+    opacity: 0.8;
 }
 .search-input {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 100px;
     padding: 0.9rem 1.8rem;
     font-size: 1rem;
-    color: var(--white);
+    color: var(--obsidian);
     width: 100%;
     max-width: 520px;
     transition: all 0.4s var(--ease-out-expo);
     font-family: var(--font-sans);
 }
 .search-input::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--obsidian);
+    opacity: 0.3;
     font-weight: 300;
 }
 .search-input:focus {
@@ -248,7 +255,7 @@ body {
     transform: scale(1.01);
 }
 
-/* ---------- PAGE SECTIONS ---------- */
+/* PAGE SECTIONS */
 .page-section {
     display: none;
     opacity: 0;
@@ -259,24 +266,25 @@ body {
     opacity: 1;
 }
 
-/* ---------- FOUNDER QUOTE ---------- */
+/* FOUNDER QUOTE */
 .founder-quote {
     font-family: var(--font-serif);
     font-size: clamp(1.4rem, 2.4vw, 2.2rem);
     font-style: italic;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--obsidian);
+    opacity: 0.8;
     border-left: 3px solid var(--yellow);
     padding-left: 2rem;
 }
 
-/* ---------- GLOW ORBS ---------- */
+/* GLOW ORBS */
 .glow-orb {
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
     pointer-events: none;
-    opacity: 0.15;
+    opacity: 0.2;
     z-index: 0;
 }
 .glow-orb--yellow {
@@ -294,7 +302,7 @@ body {
     left: -60px;
 }
 
-/* ---------- SCROLL INDICATOR ---------- */
+/* SCROLL INDICATOR */
 .scroll-indicator {
     position: absolute;
     bottom: 2.4rem;
@@ -305,7 +313,8 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.25);
+    color: var(--obsidian);
+    opacity: 0.25;
     font-size: 0.7rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -313,10 +322,10 @@ body {
 .scroll-indicator .line {
     width: 1px;
     height: 32px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(180deg, var(--obsidian), transparent);
 }
 
-/* ---------- RESPONSIVE ---------- */
+/* RESPONSIVE */
 @media (max-width: 768px) {
     .recipe-card,
     .product-card,
@@ -338,4 +347,4 @@ body {
     .scroll-indicator {
         display: none;
     }
-      }
+   }
